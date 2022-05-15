@@ -136,6 +136,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.pushButton_transfer = QtWidgets.QPushButton(self.frame_operate)
+        self.pushButton_transfer.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -154,6 +155,7 @@ class Ui_MainWindow(object):
 "QPushButton:pressed{    \n"
 "image: url(:/ico/ico/cutbutton.png);\n"
 "}")
+        self.pushButton_transfer.setCheckable(False)
         self.pushButton_transfer.setObjectName("pushButton_transfer")
         self.verticalLayout_2.addWidget(self.pushButton_transfer)
         self.pushButton_log = QtWidgets.QPushButton(self.frame_operate)
@@ -175,6 +177,11 @@ class Ui_MainWindow(object):
 "QPushButton:pressed{    \n"
 "image: url(:/ico/ico/cutbutton.png);\n"
 "}")
+        self.pushButton_log.setCheckable(True)
+        self.pushButton_log.setChecked(False)
+        self.pushButton_log.setAutoExclusive(True)
+        self.pushButton_log.setAutoDefault(False)
+        self.pushButton_log.setDefault(False)
         self.pushButton_log.setObjectName("pushButton_log")
         self.verticalLayout_2.addWidget(self.pushButton_log)
         self.pushButton_info = QtWidgets.QPushButton(self.frame_operate)
@@ -316,11 +323,8 @@ class Ui_MainWindow(object):
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_transfer = QtWidgets.QWidget()
         self.page_transfer.setObjectName("page_transfer")
-        self.listView = QtWidgets.QListView(self.page_transfer)
-        self.listView.setGeometry(QtCore.QRect(30, 20, 551, 251))
-        self.listView.setObjectName("listView")
         self.pushButton_upload = QtWidgets.QPushButton(self.page_transfer)
-        self.pushButton_upload.setGeometry(QtCore.QRect(110, 290, 111, 41))
+        self.pushButton_upload.setGeometry(QtCore.QRect(110, 300, 111, 41))
         font = QtGui.QFont()
         font.setFamily("851tegakizatsu")
         font.setPointSize(15)
@@ -336,7 +340,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_upload.setObjectName("pushButton_upload")
         self.pushButton_download = QtWidgets.QPushButton(self.page_transfer)
-        self.pushButton_download.setGeometry(QtCore.QRect(370, 290, 111, 41))
+        self.pushButton_download.setGeometry(QtCore.QRect(370, 300, 111, 41))
         font = QtGui.QFont()
         font.setFamily("851tegakizatsu")
         font.setPointSize(15)
@@ -351,9 +355,174 @@ class Ui_MainWindow(object):
 "    padding-top:5px;\n"
 "}")
         self.pushButton_download.setObjectName("pushButton_download")
+        self.tableWidget = QtWidgets.QTableWidget(self.page_transfer)
+        self.tableWidget.setGeometry(QtCore.QRect(10, 20, 641, 261))
+        self.tableWidget.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.tableWidget.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.tableWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.tableWidget.setAutoFillBackground(False)
+        self.tableWidget.setStyleSheet("QTableWidget{\n"
+"color:rgba(255, 255, 255,100);\n"
+"    font: 12pt \"黑体\";\n"
+"background:rgba(8, 74, 90,100);\n"
+"border:0px solid #242424;\n"
+"alternate-background-color:rgba(10, 113, 139,100);\n"
+"gridline-color:rgba(8, 74, 90,100);\n"
+"}\n"
+" \n"
+"QTableWidget::item:selected{\n"
+"color:#DCDCDC;\n"
+"background: rgb(223, 212, 63);\n"
+"}\n"
+" \n"
+"QTableWidget::item:hover{\n"
+"background:rgb(88, 72, 44);;\n"
+"}\n"
+"QHeaderView::section{\n"
+"text-align:center;\n"
+"background:rgb(88, 72, 44);\n"
+"padding:3px;\n"
+"margin:0px;\n"
+"color:#DCDCDC;\n"
+"border:1px solid #242424;\n"
+"border-left-width:0;\n"
+"}\n"
+" \n"
+"QScrollBar:vertical{\n"
+"background:#484848;\n"
+"padding:0px;\n"
+"border-radius:6px;\n"
+"max-width:12px;\n"
+"}\n"
+" \n"
+" \n"
+"QScrollBar::handle:vertical{\n"
+"background:#CCCCCC;\n"
+"}\n"
+" \n"
+"QScrollBar::handle:hover:vertical,QScrollBar::handle:pressed:vertical{\n"
+"background:#A7A7A7;\n"
+"}\n"
+"QScrollBar::sub-page:vertical{\n"
+"background:#444444;\n"
+"}\n"
+" \n"
+" \n"
+"QScrollBar::add-page:vertical{\n"
+"background:#5B5B5B;\n"
+"}\n"
+" \n"
+"\n"
+"")
+        self.tableWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.tableWidget.setDragEnabled(False)
+        self.tableWidget.setAlternatingRowColors(True)
+        self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.tableWidget.setTextElideMode(QtCore.Qt.ElideRight)
+        self.tableWidget.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollPerItem)
+        self.tableWidget.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerItem)
+        self.tableWidget.setShowGrid(False)
+        self.tableWidget.setGridStyle(QtCore.Qt.DashLine)
+        self.tableWidget.setRowCount(10)
+        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setObjectName("tableWidget")
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, item)
+        self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(150)
+        self.tableWidget.horizontalHeader().setHighlightSections(True)
+        self.tableWidget.horizontalHeader().setStretchLastSection(True)
+        self.tableWidget.verticalHeader().setVisible(False)
+        self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
+        self.tableWidget.verticalHeader().setSortIndicatorShown(False)
         self.stackedWidget.addWidget(self.page_transfer)
         self.page_log = QtWidgets.QWidget()
         self.page_log.setObjectName("page_log")
+        self.tableWidget_2 = QtWidgets.QTableWidget(self.page_log)
+        self.tableWidget_2.setGeometry(QtCore.QRect(10, 40, 611, 341))
+        self.tableWidget_2.setStyleSheet("QTableWidget{\n"
+"color:#DCDCDC;\n"
+"background:#444444;\n"
+"border:1px solid #242424;\n"
+"alternate-background-color:#525252;\n"
+"gridline-color:#242424;\n"
+"}\n"
+" \n"
+"QTableWidget::item:selected{\n"
+"color:#DCDCDC;\n"
+"background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);\n"
+"}\n"
+" \n"
+"QTableWidget::item:hover{\n"
+"background:#5B5B5B;\n"
+"}\n"
+"QHeaderView::section{\n"
+"text-align:center;\n"
+"background:#5E5E5E;\n"
+"padding:3px;\n"
+"margin:0px;\n"
+"color:#DCDCDC;\n"
+"border:1px solid #242424;\n"
+"border-left-width:0;\n"
+"}\n"
+" \n"
+"QScrollBar:vertical{\n"
+"background:#484848;\n"
+"padding:0px;\n"
+"border-radius:6px;\n"
+"max-width:12px;\n"
+"}\n"
+" \n"
+" \n"
+"QScrollBar::handle:vertical{\n"
+"background:#CCCCCC;\n"
+"}\n"
+" \n"
+"QScrollBar::handle:hover:vertical,QScrollBar::handle:pressed:vertical{\n"
+"background:#A7A7A7;\n"
+"}\n"
+"QScrollBar::sub-page:vertical{\n"
+"background:#444444;\n"
+"}\n"
+" \n"
+" \n"
+"QScrollBar::add-page:vertical{\n"
+"background:#5B5B5B;\n"
+"}\n"
+" \n"
+"QScrollBar::add-line:vertical{\n"
+"background:none;\n"
+"}\n"
+"QScrollBar::sub-line:vertical{\n"
+"background:none;\n"
+"}")
+        self.tableWidget_2.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.tableWidget_2.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+        self.tableWidget_2.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
+        self.tableWidget_2.setDragDropOverwriteMode(True)
+        self.tableWidget_2.setAlternatingRowColors(True)
+        self.tableWidget_2.setShowGrid(False)
+        self.tableWidget_2.setRowCount(15)
+        self.tableWidget_2.setColumnCount(3)
+        self.tableWidget_2.setObjectName("tableWidget_2")
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(2, item)
+        self.tableWidget_2.horizontalHeader().setVisible(False)
+        self.tableWidget_2.horizontalHeader().setCascadingSectionResizes(True)
+        self.tableWidget_2.horizontalHeader().setSortIndicatorShown(False)
+        self.tableWidget_2.horizontalHeader().setStretchLastSection(True)
+        self.tableWidget_2.verticalHeader().setVisible(False)
+        self.tableWidget_2.verticalHeader().setStretchLastSection(False)
         self.stackedWidget.addWidget(self.page_log)
         self.horizontalLayout_4.addWidget(self.stackedWidget)
         self.verticalLayout_3.addWidget(self.frame_right_bottom)
@@ -384,6 +553,21 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "Secure File Transfer"))
         self.pushButton_upload.setText(_translate("MainWindow", "上传"))
         self.pushButton_download.setText(_translate("MainWindow", "下载"))
+        self.tableWidget.setSortingEnabled(False)
+        item = self.tableWidget.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "文件名"))
+        item = self.tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "文件大小"))
+        item = self.tableWidget.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "上传用户"))
+        item = self.tableWidget_2.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "时间"))
+        item = self.tableWidget_2.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "用户"))
+        item = self.tableWidget_2.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "操作"))
 import ico_rc
 
 

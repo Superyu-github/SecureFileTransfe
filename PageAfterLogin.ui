@@ -265,6 +265,9 @@ padding-bottom:5px;
               </property>
               <item>
                <widget class="QPushButton" name="pushButton_transfer">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                   <horstretch>0</horstretch>
@@ -290,6 +293,9 @@ image: url(:/ico/ico/cutbutton.png);
                 </property>
                 <property name="text">
                  <string>文件传输</string>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -320,6 +326,21 @@ image: url(:/ico/ico/cutbutton.png);
                 </property>
                 <property name="text">
                  <string>日志查看</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+                <property name="autoDefault">
+                 <bool>false</bool>
+                </property>
+                <property name="default">
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -620,21 +641,11 @@ color: rgb(248, 237, 83);</string>
                    <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_transfer">
-                   <widget class="QListView" name="listView">
-                    <property name="geometry">
-                     <rect>
-                      <x>30</x>
-                      <y>20</y>
-                      <width>551</width>
-                      <height>251</height>
-                     </rect>
-                    </property>
-                   </widget>
                    <widget class="QPushButton" name="pushButton_upload">
                     <property name="geometry">
                      <rect>
                       <x>110</x>
-                      <y>290</y>
+                      <y>300</y>
                       <width>111</width>
                       <height>41</height>
                      </rect>
@@ -664,7 +675,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>370</x>
-                      <y>290</y>
+                      <y>300</y>
                       <width>111</width>
                       <height>41</height>
                      </rect>
@@ -690,8 +701,312 @@ QPushButton:pressed{
                      <string>下载</string>
                     </property>
                    </widget>
+                   <widget class="QTableWidget" name="tableWidget">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>20</y>
+                      <width>641</width>
+                      <height>261</height>
+                     </rect>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::StrongFocus</enum>
+                    </property>
+                    <property name="contextMenuPolicy">
+                     <enum>Qt::DefaultContextMenu</enum>
+                    </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::LeftToRight</enum>
+                    </property>
+                    <property name="autoFillBackground">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QTableWidget{
+color:rgba(255, 255, 255,100);
+	font: 12pt &quot;黑体&quot;;
+background:rgba(8, 74, 90,100);
+border:0px solid #242424;
+alternate-background-color:rgba(10, 113, 139,100);
+gridline-color:rgba(8, 74, 90,100);
+}
+ 
+QTableWidget::item:selected{
+color:#DCDCDC;
+background: rgb(223, 212, 63);
+}
+ 
+QTableWidget::item:hover{
+background:rgb(88, 72, 44);;
+}
+QHeaderView::section{
+text-align:center;
+background:rgb(88, 72, 44);
+padding:3px;
+margin:0px;
+color:#DCDCDC;
+border:1px solid #242424;
+border-left-width:0;
+}
+ 
+QScrollBar:vertical{
+background:#484848;
+padding:0px;
+border-radius:6px;
+max-width:12px;
+}
+ 
+ 
+QScrollBar::handle:vertical{
+background:#CCCCCC;
+}
+ 
+QScrollBar::handle:hover:vertical,QScrollBar::handle:pressed:vertical{
+background:#A7A7A7;
+}
+QScrollBar::sub-page:vertical{
+background:#444444;
+}
+ 
+ 
+QScrollBar::add-page:vertical{
+background:#5B5B5B;
+}
+ 
+
+</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="dragEnabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alternatingRowColors">
+                     <bool>true</bool>
+                    </property>
+                    <property name="selectionBehavior">
+                     <enum>QAbstractItemView::SelectRows</enum>
+                    </property>
+                    <property name="textElideMode">
+                     <enum>Qt::ElideRight</enum>
+                    </property>
+                    <property name="verticalScrollMode">
+                     <enum>QAbstractItemView::ScrollPerItem</enum>
+                    </property>
+                    <property name="horizontalScrollMode">
+                     <enum>QAbstractItemView::ScrollPerItem</enum>
+                    </property>
+                    <property name="showGrid">
+                     <bool>false</bool>
+                    </property>
+                    <property name="gridStyle">
+                     <enum>Qt::DashLine</enum>
+                    </property>
+                    <property name="sortingEnabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="rowCount">
+                     <number>10</number>
+                    </property>
+                    <property name="columnCount">
+                     <number>3</number>
+                    </property>
+                    <attribute name="horizontalHeaderCascadingSectionResizes">
+                     <bool>true</bool>
+                    </attribute>
+                    <attribute name="horizontalHeaderDefaultSectionSize">
+                     <number>150</number>
+                    </attribute>
+                    <attribute name="horizontalHeaderHighlightSections">
+                     <bool>true</bool>
+                    </attribute>
+                    <attribute name="horizontalHeaderStretchLastSection">
+                     <bool>true</bool>
+                    </attribute>
+                    <attribute name="verticalHeaderVisible">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="verticalHeaderCascadingSectionResizes">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                     <bool>false</bool>
+                    </attribute>
+                    <row>
+                     <property name="text">
+                      <string>1</string>
+                     </property>
+                    </row>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <column>
+                     <property name="text">
+                      <string>文件名</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>文件大小</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>上传用户</string>
+                     </property>
+                    </column>
+                   </widget>
                   </widget>
-                  <widget class="QWidget" name="page_log"/>
+                  <widget class="QWidget" name="page_log">
+                   <widget class="QTableWidget" name="tableWidget_2">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>40</y>
+                      <width>611</width>
+                      <height>341</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QTableWidget{
+color:#DCDCDC;
+background:#444444;
+border:1px solid #242424;
+alternate-background-color:#525252;
+gridline-color:#242424;
+}
+ 
+QTableWidget::item:selected{
+color:#DCDCDC;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+}
+ 
+QTableWidget::item:hover{
+background:#5B5B5B;
+}
+QHeaderView::section{
+text-align:center;
+background:#5E5E5E;
+padding:3px;
+margin:0px;
+color:#DCDCDC;
+border:1px solid #242424;
+border-left-width:0;
+}
+ 
+QScrollBar:vertical{
+background:#484848;
+padding:0px;
+border-radius:6px;
+max-width:12px;
+}
+ 
+ 
+QScrollBar::handle:vertical{
+background:#CCCCCC;
+}
+ 
+QScrollBar::handle:hover:vertical,QScrollBar::handle:pressed:vertical{
+background:#A7A7A7;
+}
+QScrollBar::sub-page:vertical{
+background:#444444;
+}
+ 
+ 
+QScrollBar::add-page:vertical{
+background:#5B5B5B;
+}
+ 
+QScrollBar::add-line:vertical{
+background:none;
+}
+QScrollBar::sub-line:vertical{
+background:none;
+}</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="verticalScrollBarPolicy">
+                     <enum>Qt::ScrollBarAsNeeded</enum>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QAbstractScrollArea::AdjustIgnored</enum>
+                    </property>
+                    <property name="dragDropOverwriteMode">
+                     <bool>true</bool>
+                    </property>
+                    <property name="alternatingRowColors">
+                     <bool>true</bool>
+                    </property>
+                    <property name="showGrid">
+                     <bool>false</bool>
+                    </property>
+                    <property name="rowCount">
+                     <number>15</number>
+                    </property>
+                    <property name="columnCount">
+                     <number>3</number>
+                    </property>
+                    <attribute name="horizontalHeaderVisible">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="horizontalHeaderCascadingSectionResizes">
+                     <bool>true</bool>
+                    </attribute>
+                    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="horizontalHeaderStretchLastSection">
+                     <bool>true</bool>
+                    </attribute>
+                    <attribute name="verticalHeaderVisible">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="verticalHeaderStretchLastSection">
+                     <bool>false</bool>
+                    </attribute>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <column>
+                     <property name="text">
+                      <string>时间</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>用户</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>操作</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </widget>
                  </widget>
                 </item>
                </layout>

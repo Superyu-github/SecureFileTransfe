@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project SecureFileTransfe -->
-<!-- Saved: 2022-05-15, 01:37:57 -->
+<!-- Saved: 2022-05-15, 13:34:32 -->
 <!-- Copyright (C) 2022 ,  -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -26,7 +26,6 @@
   </Forms>
   <Resources>
     <Resource>ico.qrc</Resource>
-    <Resource>ico/ico.qrc</Resource>
   </Resources>
   <Others>
     <Other>.gitignore</Other>

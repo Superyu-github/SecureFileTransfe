@@ -7,6 +7,7 @@ from PyQt5 import QtCore, QtGui
 from PyQt5.QtCore import pyqtSlot, Qt
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
+from PageAfterLogin import PageAfterLogein
 from Ui_PageBeforeLogin import Ui_MainWindow
 
 
@@ -73,6 +74,8 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         """
         username = self.lineEdit_username_l.text()
         password = self.lineEdit_password_l.text()
+        PageAfterLogein.show()
+        self.close()
         # TODO: 参数传入登录函数
     
     @pyqtSlot()
@@ -105,6 +108,7 @@ if __name__ == "__main__":
     import sys
 
     app = QApplication(sys.argv)
-    ui = PageBeforeLogin()
-    ui.show()
+    PageBeforeLogin = PageBeforeLogin()
+    PageAfterLogein = PageAfterLogein()
+    PageBeforeLogin.show()
     sys.exit(app.exec_())
