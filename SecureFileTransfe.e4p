@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project SecureFileTransfe -->
-<!-- Saved: 2022-05-15, 13:34:32 -->
+<!-- Saved: 2022-05-16, 02:57:49 -->
 <!-- Copyright (C) 2022 ,  -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -15,12 +15,14 @@
   <Sources>
     <Source>PageAfterLogin.py</Source>
     <Source>PageBeforeLogin.py</Source>
+    <Source>Ui_DialogLoginError.py</Source>
     <Source>Ui_PageAfterLogin.py</Source>
     <Source>Ui_PageBeforeLogin.py</Source>
     <Source>__init__.py</Source>
     <Source>ico_rc.py</Source>
   </Sources>
   <Forms>
+    <Form>DialogLoginError.ui</Form>
     <Form>PageAfterLogin.ui</Form>
     <Form>PageBeforeLogin.ui</Form>
   </Forms>

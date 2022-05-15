@@ -5,7 +5,7 @@ Module implementing PageAfterLogein.
 """
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtCore import pyqtSlot, Qt
-from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidget, QTableWidgetItem, QFileDialog
 
 from Ui_PageAfterLogin import Ui_MainWindow
 
@@ -14,6 +14,7 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
     """
     Class documentation goes here.
     """
+
     def __init__(self, parent=None):
         """
         Constructor
@@ -30,8 +31,7 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         # QTableWidget.resizeColumnsToContents(self.tableWidget)
         # QTableWidget.resizeRowsToContents(self.tableWidget)
         item = QTableWidgetItem("11111111111")
-        self.tableWidget.setItem(1,1,item)
-
+        self.tableWidget.setItem(1, 1, item)
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton and self.isMaximized() == False:
@@ -49,7 +49,6 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         self.m_flag = False
         self.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
 
-
     @pyqtSlot()
     def on_pushButton_transfer_clicked(self):
         """
@@ -57,43 +56,111 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         """
         self.stackedWidget.setCurrentIndex(0)
         self.pushButton_transfer.setStyleSheet('''image: url(:/ico/ico/cutbutton.png);
-                                                border-radius:30px;
-                                                color: rgb(248, 237, 83);''')
+                                                    color: rgb(248, 237, 83);
+                                                    border-radius:0px;
+                                                    background-color:rgba(0, 0, 0,0);                                
+                                                    ''')
+        self.pushButton_log.setStyleSheet('''QPushButton{	
+                                                border-radius:0px;
+                                                background-color:rgba(0, 0, 0,0);
+                                                color: rgb(199, 151, 7);
+                                                }
+                                                QPushButton:pressed{	
+                                                image: url(:/ico/ico/cutbutton.png);
+                                                color: rgb(248, 237, 83);
+                                                }  ''')
+        self.pushButton_info.setStyleSheet('''QPushButton{	
+                                                        border-radius:0px;
+                                                        background-color:rgba(0, 0, 0,0);
+                                                        color: rgb(199, 151, 7);
+                                                        }
+                                                        QPushButton:pressed{	
+                                                        image: url(:/ico/ico/cutbutton.png);
+                                                        color: rgb(248, 237, 83);
+                                                        }  ''')
         # TODO: 函数对接
 
-    
     @pyqtSlot()
     def on_pushButton_log_clicked(self):
         """
         Slot documentation goes here.
         """
         self.stackedWidget.setCurrentIndex(1)
+        self.pushButton_transfer.setStyleSheet('''QPushButton{	
+                                                        border-radius:0px;
+                                                        background-color:rgba(0, 0, 0,0);
+                                                        color: rgb(199, 151, 7);
+                                                        }
+                                                        QPushButton:pressed{	
+                                                        image: url(:/ico/ico/cutbutton.png);
+                                                        color: rgb(248, 237, 83);
+                                                        }  ''')
+        self.pushButton_log.setStyleSheet('''image: url(:/ico/ico/cutbutton.png);
+                                                            color: rgb(248, 237, 83);
+                                                            border-radius:0px;
+                                                            background-color:rgba(0, 0, 0,0);                                
+                                                            ''')
+        self.pushButton_info.setStyleSheet('''QPushButton{	
+                                                                border-radius:0px;
+                                                                background-color:rgba(0, 0, 0,0);
+                                                                color: rgb(199, 151, 7);
+                                                                }
+                                                                QPushButton:pressed{	
+                                                                image: url(:/ico/ico/cutbutton.png);
+                                                                color: rgb(248, 237, 83);
+                                                                }  ''')
         # TODO: 函数对接
 
-    
     @pyqtSlot()
     def on_pushButton_info_clicked(self):
         """
         Slot documentation goes here.
         """
+        self.stackedWidget.setCurrentIndex(2)
+        self.pushButton_transfer.setStyleSheet('''QPushButton{	
+                                                                border-radius:0px;
+                                                                background-color:rgba(0, 0, 0,0);
+                                                                color: rgb(199, 151, 7);
+                                                                }
+                                                                QPushButton:pressed{	
+                                                                image: url(:/ico/ico/cutbutton.png);
+                                                                color: rgb(248, 237, 83);
+                                                                }  ''')
+        self.pushButton_log.setStyleSheet('''QPushButton{	
+                                                        border-radius:0px;
+                                                        background-color:rgba(0, 0, 0,0);
+                                                        color: rgb(199, 151, 7);
+                                                        }
+                                                        QPushButton:pressed{	
+                                                        image: url(:/ico/ico/cutbutton.png);
+                                                        color: rgb(248, 237, 83);
+                                                        }  ''')
+        self.pushButton_info.setStyleSheet('''image: url(:/ico/ico/cutbutton.png);
+                                                            color: rgb(248, 237, 83);
+                                                            border-radius:0px;
+                                                            background-color:rgba(0, 0, 0,0);                                
+                                                            ''')
         # TODO: not implemented yet
-        raise NotImplementedError
-    
+
+
     @pyqtSlot()
     def on_pushButton_upload_clicked(self):
         """
         Slot documentation goes here.
         """
+        FileDialog = QFileDialog()
+        filename, _ = FileDialog.getOpenFileName(self, "Choose File", '.', "All Files(*)")
+
         # TODO: not implemented yet
-        raise NotImplementedError
-    
+
     @pyqtSlot()
     def on_pushButton_download_clicked(self):
         """
         Slot documentation goes here.
         """
+        row = self.tableWidget.currentRow()
+        print(row)
         # TODO: not implemented yet
-        raise NotImplementedError
 
 
 if __name__ == "__main__":

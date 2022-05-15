@@ -118,7 +118,7 @@ class Ui_MainWindow(object):
         self.frame_left.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_left.setObjectName("frame_left")
         self.frame_operate = QtWidgets.QFrame(self.frame_left)
-        self.frame_operate.setGeometry(QtCore.QRect(0, 110, 171, 251))
+        self.frame_operate.setGeometry(QtCore.QRect(0, 110, 181, 191))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -149,11 +149,13 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_transfer.setFont(font)
         self.pushButton_transfer.setStyleSheet("\n"
-"QPushButton{    border-radius:30px;\n"
-"color: rgb(248, 237, 83);\n"
+"QPushButton{    border-radius:0px;\n"
+"background-color:rgba(0, 0, 0,0);\n"
+"color: rgb(199, 151, 7);\n"
 "}\n"
 "QPushButton:pressed{    \n"
 "image: url(:/ico/ico/cutbutton.png);\n"
+"color: rgb(248, 237, 83);\n"
 "}")
         self.pushButton_transfer.setCheckable(False)
         self.pushButton_transfer.setObjectName("pushButton_transfer")
@@ -172,10 +174,11 @@ class Ui_MainWindow(object):
         self.pushButton_log.setFont(font)
         self.pushButton_log.setStyleSheet("\n"
 "QPushButton{    border-radius:30px;\n"
-"color: rgb(248, 237, 83);\n"
+"color: rgb(199, 151, 7);\n"
 "}\n"
 "QPushButton:pressed{    \n"
 "image: url(:/ico/ico/cutbutton.png);\n"
+"color: rgb(248, 237, 83);\n"
 "}")
         self.pushButton_log.setCheckable(True)
         self.pushButton_log.setChecked(False)
@@ -198,13 +201,17 @@ class Ui_MainWindow(object):
         self.pushButton_info.setFont(font)
         self.pushButton_info.setStyleSheet("\n"
 "QPushButton{    border-radius:30px;\n"
-"color: rgb(248, 237, 83);\n"
+"color: rgb(199, 151, 7);\n"
 "}\n"
 "QPushButton:pressed{    \n"
 "image: url(:/ico/ico/cutbutton.png);\n"
+"color: rgb(248, 237, 83);\n"
 "}")
         self.pushButton_info.setObjectName("pushButton_info")
         self.verticalLayout_2.addWidget(self.pushButton_info)
+        self.pushButton_log.raise_()
+        self.pushButton_info.raise_()
+        self.pushButton_transfer.raise_()
         self.label_back = QtWidgets.QLabel(self.frame_left)
         self.label_back.setGeometry(QtCore.QRect(0, 10, 91, 61))
         self.label_back.setStyleSheet("image: url(:/ico/ico/redpoint2.png);")
@@ -275,6 +282,13 @@ class Ui_MainWindow(object):
         self.label_10.setStyleSheet("image: url(:/ico/ico/user1.png);")
         self.label_10.setText("")
         self.label_10.setObjectName("label_10")
+        self.label_back.raise_()
+        self.label_user.raise_()
+        self.frame_connect.raise_()
+        self.frame_net.raise_()
+        self.label_user_identity.raise_()
+        self.label_10.raise_()
+        self.frame_operate.raise_()
         self.horizontalLayout_3.addWidget(self.frame_left)
         self.frame_right = QtWidgets.QFrame(self.frame_content)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
@@ -444,86 +458,15 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_transfer)
         self.page_log = QtWidgets.QWidget()
         self.page_log.setObjectName("page_log")
-        self.tableWidget_2 = QtWidgets.QTableWidget(self.page_log)
-        self.tableWidget_2.setGeometry(QtCore.QRect(10, 40, 611, 341))
-        self.tableWidget_2.setStyleSheet("QTableWidget{\n"
-"color:#DCDCDC;\n"
-"background:#444444;\n"
-"border:1px solid #242424;\n"
-"alternate-background-color:#525252;\n"
-"gridline-color:#242424;\n"
-"}\n"
-" \n"
-"QTableWidget::item:selected{\n"
-"color:#DCDCDC;\n"
-"background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);\n"
-"}\n"
-" \n"
-"QTableWidget::item:hover{\n"
-"background:#5B5B5B;\n"
-"}\n"
-"QHeaderView::section{\n"
-"text-align:center;\n"
-"background:#5E5E5E;\n"
-"padding:3px;\n"
-"margin:0px;\n"
-"color:#DCDCDC;\n"
-"border:1px solid #242424;\n"
-"border-left-width:0;\n"
-"}\n"
-" \n"
-"QScrollBar:vertical{\n"
-"background:#484848;\n"
-"padding:0px;\n"
-"border-radius:6px;\n"
-"max-width:12px;\n"
-"}\n"
-" \n"
-" \n"
-"QScrollBar::handle:vertical{\n"
-"background:#CCCCCC;\n"
-"}\n"
-" \n"
-"QScrollBar::handle:hover:vertical,QScrollBar::handle:pressed:vertical{\n"
-"background:#A7A7A7;\n"
-"}\n"
-"QScrollBar::sub-page:vertical{\n"
-"background:#444444;\n"
-"}\n"
-" \n"
-" \n"
-"QScrollBar::add-page:vertical{\n"
-"background:#5B5B5B;\n"
-"}\n"
-" \n"
-"QScrollBar::add-line:vertical{\n"
-"background:none;\n"
-"}\n"
-"QScrollBar::sub-line:vertical{\n"
-"background:none;\n"
-"}")
-        self.tableWidget_2.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.tableWidget_2.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
-        self.tableWidget_2.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
-        self.tableWidget_2.setDragDropOverwriteMode(True)
-        self.tableWidget_2.setAlternatingRowColors(True)
-        self.tableWidget_2.setShowGrid(False)
-        self.tableWidget_2.setRowCount(15)
-        self.tableWidget_2.setColumnCount(3)
-        self.tableWidget_2.setObjectName("tableWidget_2")
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(2, item)
-        self.tableWidget_2.horizontalHeader().setVisible(False)
-        self.tableWidget_2.horizontalHeader().setCascadingSectionResizes(True)
-        self.tableWidget_2.horizontalHeader().setSortIndicatorShown(False)
-        self.tableWidget_2.horizontalHeader().setStretchLastSection(True)
-        self.tableWidget_2.verticalHeader().setVisible(False)
-        self.tableWidget_2.verticalHeader().setStretchLastSection(False)
+        self.textBrowser = QtWidgets.QTextBrowser(self.page_log)
+        self.textBrowser.setGeometry(QtCore.QRect(10, 10, 621, 371))
+        self.textBrowser.setStyleSheet("background-color: rgba(0, 0, 0,0);\n"
+"border-radius:0px;")
+        self.textBrowser.setObjectName("textBrowser")
         self.stackedWidget.addWidget(self.page_log)
+        self.page_info = QtWidgets.QWidget()
+        self.page_info.setObjectName("page_info")
+        self.stackedWidget.addWidget(self.page_info)
         self.horizontalLayout_4.addWidget(self.stackedWidget)
         self.verticalLayout_3.addWidget(self.frame_right_bottom)
         self.horizontalLayout_3.addWidget(self.frame_right)
@@ -534,7 +477,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralWidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.pushButton.clicked.connect(MainWindow.showMinimized)
         self.pushButton_2.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -562,12 +505,6 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "文件大小"))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "上传用户"))
-        item = self.tableWidget_2.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "时间"))
-        item = self.tableWidget_2.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "用户"))
-        item = self.tableWidget_2.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "操作"))
 import ico_rc
 
 

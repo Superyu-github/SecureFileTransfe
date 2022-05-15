@@ -55,8 +55,8 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        ip = self.lineEdit_ip_s
-        port = self.lineEdit_port_s
+        ip = self.lineEdit_ip_s.text()
+        port = self.lineEdit_port_s.text()
         # TODO: 传入设置函数
 
     
@@ -74,8 +74,23 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         """
         username = self.lineEdit_username_l.text()
         password = self.lineEdit_password_l.text()
-        PageAfterLogein.show()
-        self.close()
+
+        if 0 :
+            PageAfterLogein.show()
+            self.close()
+
+
+        else:
+            self.pushButton_login_l.setText("登录失败")
+            self.pushButton_login_l.setStyleSheet('''QPushButton{	
+                                                                    background-color: rgb(207, 44, 24);
+                                                                    color: rgb(255, 255, 255);
+                                                                }
+                                                                QPushButton:pressed{	
+                                                                    padding-left:5px;
+                                                                    padding-top:5px;
+                                                                }''')
+
         # TODO: 参数传入登录函数
     
     @pyqtSlot()
@@ -99,10 +114,144 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         """
         username = self.lineEdit_username_r.text()
         password = self.lineEdit_password_r.text()
-        rpassword = self.lineEdit_rpassword_r.text()
+        rpassword = self.lineEdit_repassword_r.text()
+        if 0:
+            self.pushButton_register_r.setText("注册成功")
+            self.pushButton_register_r.setStyleSheet('''QPushButton{	
+                                                                    background-color: rgb(14, 177, 68);
+                                                                    color: rgb(255, 255, 255);
+                                                                }
+                                                                QPushButton:pressed{	
+                                                                    padding-left:5px;
+                                                                    padding-top:5px;
+                                                                }''')
+        else:
+            self.pushButton_register_r.setText("注册失败")
+            self.pushButton_register_r.setStyleSheet('''QPushButton{	
+                                                                                background-color: rgb(207, 44, 24);
+                                                                                color: rgb(255, 255, 255);
+                                                                            }
+                                                                            QPushButton:pressed{	
+                                                                                padding-left:5px;
+                                                                                padding-top:5px;
+                                                                            }''')
         # TODO: 传入注册函数
+    
+    @pyqtSlot(int, int)
+    def on_lineEdit_username_r_cursorPositionChanged(self, p0, p1):
+        """
+        Slot documentation goes here.
+        
+        @param p0 DESCRIPTION
+        @type int
+        @param p1 DESCRIPTION
+        @type int
+        """
+        self.pushButton_register_r.setText("注册")
+        self.pushButton_register_r.setStyleSheet('''QPushButton{	                                                                
+                                                                background-color: rgb(223, 212, 63);
+                                                                color: rgb(0, 0, 0);
+                                                            }
+                                                            QPushButton:pressed{	
+                                                                padding-left:5px;
+                                                                padding-top:5px;
+                                                            }''')
+    
+    @pyqtSlot(int, int)
+    def on_lineEdit_password_r_cursorPositionChanged(self, p0, p1):
+        """
+        Slot documentation goes here.
+        
+        @param p0 DESCRIPTION
+        @type int
+        @param p1 DESCRIPTION
+        @type int
+        """
+        self.pushButton_register_r.setText("注册")
+        self.pushButton_register_r.setStyleSheet('''QPushButton{	                                                                
+                                                                background-color: rgb(223, 212, 63);
+                                                                color: rgb(0, 0, 0);
+                                                            }
+                                                            QPushButton:pressed{	
+                                                                padding-left:5px;
+                                                                padding-top:5px;
+                                                            }''')
+    
+    @pyqtSlot(int, int)
+    def on_lineEdit_repassword_r_cursorPositionChanged(self, p0, p1):
+        """
+        Slot documentation goes here.
+        
+        @param p0 DESCRIPTION
+        @type int
+        @param p1 DESCRIPTION
+        @type int
+        """
+        self.pushButton_register_r.setText("注册")
+        self.pushButton_register_r.setStyleSheet('''QPushButton{	                                                                
+                                                                background-color: rgb(223, 212, 63);
+                                                                color: rgb(0, 0, 0);
+                                                            }
+                                                            QPushButton:pressed{	
+                                                                padding-left:5px;
+                                                                padding-top:5px;
+                                                            }''')
+    
+    @pyqtSlot(int, int)
+    def on_lineEdit_username_l_cursorPositionChanged(self, p0, p1):
+        """
+        Slot documentation goes here.
+        
+        @param p0 DESCRIPTION
+        @type int
+        @param p1 DESCRIPTION
+        @type int
+        """
+        self.pushButton_login_l.setText("登录")
+        self.pushButton_login_l.setStyleSheet('''QPushButton{	                                                                
+                                                                background-color: rgb(223, 212, 63);
+                                                                color: rgb(0, 0, 0);
+                                                            }
+                                                            QPushButton:pressed{	
+                                                                padding-left:5px;
+                                                                padding-top:5px;
+                                                            }''')
+
+    
+    @pyqtSlot(int, int)
+    def on_lineEdit_password_l_cursorPositionChanged(self, p0, p1):
+        """
+        Slot documentation goes here.
+        
+        @param p0 DESCRIPTION
+        @type int
+        @param p1 DESCRIPTION
+        @type int
+        """
+        self.pushButton_login_l.setText("登录")
+        self.pushButton_login_l.setStyleSheet('''QPushButton{	                                                                
+                                                                background-color: rgb(223, 212, 63);
+                                                                color: rgb(0, 0, 0);
+                                                            }
+                                                            QPushButton:pressed{	
+                                                                padding-left:5px;
+                                                                padding-top:5px;
+                                                            }''')
+    
 
 
+def connect_sever():
+    try:
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/ico/ico/greenpoint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        PageBeforeLogin.pushButton_greenlight.setIcon(icon)
+        pass
+        #建立连接
+
+    except:
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/ico/ico/greenpoint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        PageBeforeLogin.pushButton_greenlight.setIcon(icon)
 
 if __name__ == "__main__":
     import sys
@@ -110,5 +259,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     PageBeforeLogin = PageBeforeLogin()
     PageAfterLogein = PageAfterLogein()
+    connect_sever()
     PageBeforeLogin.show()
     sys.exit(app.exec_())
