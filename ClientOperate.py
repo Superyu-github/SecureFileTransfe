@@ -86,8 +86,8 @@ class Client:
                 aes_key_path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'AES_key')
                 file_aes_key = open(aes_key_path, 'rb')  # 打开AES秘钥文件
                 aes_key = file_aes_key.read()
-                from Crypto.Cipher import AES
-                from Crypto import Random
+                from Cryptodome.Cipher import AES
+                from Cryptodome import Random
                 # iv用来记录AES随机生成的一个16字节初始向量
                 iv = Random.new().read(AES.block_size)  # 使用Crypto中Random模块,读取16字节数据作为iv的值，AES分块大小固定为16字节
                 print("开始对原文件进行AES加密......")
@@ -236,7 +236,7 @@ class Client:
         else:
             print('ERROR FILE')
 
-    def download(self, filename):
+    def download(self, filename, fileowner):
         # 定义文件头信息，包含文件名和文件大小
         header = {
             'Command': 'Download',
@@ -244,6 +244,7 @@ class Client:
             'fileSize': '',
             'time': time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
             'user': self.username,
+            'fileowner' : fileowner,
             'password': self.password,
         }
         header_hex = bytes(json.dumps(header).encode('utf-8'))
@@ -476,12 +477,12 @@ class Client:
         buf = self.ssock.recv(fileinfo_size)
         if buf:  # 如果不加这个if，第一个文件传输完成后会自动走到下一句
             header_json = str(struct.unpack('1024s', buf)[0], encoding='utf-8').strip('\00')
-            print(header_json)
+            # print(header_json)
             header = json.loads(header_json)
             stat = header['stat']
             if stat == 'Success':
                 checkList = header['checkList']
-                print("Checking Success!\n", checkList)
+                # print("Checking Success!\n", checkList)
                 return checkList
             else:
                 print("NO PERMISSION!")
@@ -516,8 +517,8 @@ class Client:
 
 
 def aes_encrypt(aes_file, key, iv):  # aes_file 文件，key 16-bytes 对称秘钥
-    from Crypto.Cipher import AES
-    from Crypto import Random
+    from Cryptodome.Cipher import AES
+    from Cryptodome import Random
     cipher = AES.new(key, AES.MODE_OFB, iv)  # 生成了加密时需要的实际密码,这里采用OFB模式
     # if fs is a multiple of 16
     x = len(aes_file) % 16
@@ -533,7 +534,7 @@ def aes_encrypt(aes_file, key, iv):  # aes_file 文件，key 16-bytes 对称秘�
 
 # AES解密
 def aes_decrypt(aes_file, key, iv):
-    from Crypto.Cipher import AES
+    from Cryptodome.Cipher import AES
     cipher = AES.new(key, AES.MODE_OFB, iv)  # 生成了解密时需要的实际密码,这里采用OFB模式
     msg = cipher.decrypt(aes_file)
     return msg
@@ -541,7 +542,7 @@ def aes_decrypt(aes_file, key, iv):
 
 # 计算MD5值
 def md5_encrypt(md5_file):
-    from Crypto.Hash import MD5
+    from Cryptodome.Hash import MD5
     msg = MD5.new()
     msg.update(md5_file)
     return msg.hexdigest()

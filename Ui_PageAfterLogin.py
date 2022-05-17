@@ -444,7 +444,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerItem)
         self.tableWidget.setShowGrid(False)
         self.tableWidget.setGridStyle(QtCore.Qt.DashLine)
-        self.tableWidget.setRowCount(10)
+        self.tableWidget.setRowCount(50)
         self.tableWidget.setColumnCount(5)
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()

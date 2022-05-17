@@ -172,7 +172,7 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         FileDialog = QFileDialog()
         filePath, _ = FileDialog.getOpenFileName(self, "Choose File", '.', "All Files(*)")
 
-        self.client.upload(filePath,0)
+        self.client.upload(filePath,1)
         check_list = self.client.check()
         self.update_transfer_table(check_list)
 
@@ -185,9 +185,12 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
+
         row = self.tableWidget.currentRow()
         filename = self.tableWidget.item(row,1).text()
-        self.client.download(filename)
+        username = self.tableWidget.item(row,3).text()
+        # print(username)
+        self.client.download(filename, username)
 
 
 
