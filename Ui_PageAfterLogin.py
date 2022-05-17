@@ -213,18 +213,10 @@ class Ui_MainWindow(object):
         self.pushButton_info.raise_()
         self.pushButton_transfer.raise_()
         self.label_back = QtWidgets.QLabel(self.frame_left)
-        self.label_back.setGeometry(QtCore.QRect(0, 10, 91, 61))
-        self.label_back.setStyleSheet("image: url(:/ico/ico/redpoint2.png);")
+        self.label_back.setGeometry(QtCore.QRect(0, 20, 91, 61))
+        self.label_back.setStyleSheet("image: url(:/ico/ico/bluepoint2.png);")
         self.label_back.setText("")
         self.label_back.setObjectName("label_back")
-        self.label_user = QtWidgets.QLabel(self.frame_left)
-        self.label_user.setGeometry(QtCore.QRect(80, 0, 81, 51))
-        font = QtGui.QFont()
-        font.setFamily("Comic Sans MS")
-        font.setPointSize(14)
-        self.label_user.setFont(font)
-        self.label_user.setStyleSheet("color: rgb(248, 237, 83);")
-        self.label_user.setObjectName("label_user")
         self.frame_connect = QtWidgets.QFrame(self.frame_left)
         self.frame_connect.setGeometry(QtCore.QRect(20, 470, 121, 51))
         self.frame_connect.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -268,27 +260,42 @@ class Ui_MainWindow(object):
         self.label_port.setStyleSheet("color: rgb(248, 237, 83);")
         self.label_port.setObjectName("label_port")
         self.verticalLayout_4.addWidget(self.label_port)
-        self.label_user_identity = QtWidgets.QLabel(self.frame_left)
-        self.label_user_identity.setGeometry(QtCore.QRect(90, 40, 61, 31))
+        self.label_10 = QtWidgets.QLabel(self.frame_left)
+        self.label_10.setGeometry(QtCore.QRect(30, 30, 31, 31))
+        self.label_10.setStyleSheet("image: url(:/ico/ico/user1.png);")
+        self.label_10.setText("")
+        self.label_10.setObjectName("label_10")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.frame_left)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(80, 20, 81, 61))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.label_user = QtWidgets.QLabel(self.verticalLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Comic Sans MS")
+        font.setPointSize(14)
+        self.label_user.setFont(font)
+        self.label_user.setStyleSheet("color: rgb(248, 237, 83);")
+        self.label_user.setObjectName("label_user")
+        self.verticalLayout_5.addWidget(self.label_user, 0, QtCore.Qt.AlignVCenter)
+        self.label_user_identity = QtWidgets.QLabel(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("851tegakizatsu")
         font.setPointSize(12)
         self.label_user_identity.setFont(font)
-        self.label_user_identity.setStyleSheet("\n"
-"color: rgb(248, 237, 83);")
+        self.label_user_identity.setStyleSheet("background-color: rgb(19, 99, 119);\n"
+"color: rgb(248, 237, 83);\n"
+"border-radius:5px;\n"
+"")
         self.label_user_identity.setObjectName("label_user_identity")
-        self.label_10 = QtWidgets.QLabel(self.frame_left)
-        self.label_10.setGeometry(QtCore.QRect(30, 20, 31, 31))
-        self.label_10.setStyleSheet("image: url(:/ico/ico/user1.png);")
-        self.label_10.setText("")
-        self.label_10.setObjectName("label_10")
+        self.verticalLayout_5.addWidget(self.label_user_identity, 0, QtCore.Qt.AlignHCenter)
         self.label_back.raise_()
-        self.label_user.raise_()
         self.frame_connect.raise_()
         self.frame_net.raise_()
-        self.label_user_identity.raise_()
         self.label_10.raise_()
         self.frame_operate.raise_()
+        self.verticalLayoutWidget.raise_()
         self.horizontalLayout_3.addWidget(self.frame_left)
         self.frame_right = QtWidgets.QFrame(self.frame_content)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
@@ -438,7 +445,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setShowGrid(False)
         self.tableWidget.setGridStyle(QtCore.Qt.DashLine)
         self.tableWidget.setRowCount(10)
-        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setColumnCount(5)
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(0, item)
@@ -448,8 +455,12 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(4, item)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(True)
-        self.tableWidget.horizontalHeader().setDefaultSectionSize(150)
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(100)
         self.tableWidget.horizontalHeader().setHighlightSections(True)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.tableWidget.verticalHeader().setVisible(False)
@@ -460,8 +471,41 @@ class Ui_MainWindow(object):
         self.page_log.setObjectName("page_log")
         self.textBrowser = QtWidgets.QTextBrowser(self.page_log)
         self.textBrowser.setGeometry(QtCore.QRect(10, 10, 621, 371))
-        self.textBrowser.setStyleSheet("background-color: rgba(0, 0, 0,0);\n"
-"border-radius:0px;")
+        font = QtGui.QFont()
+        font.setFamily("Comic Sans MS")
+        font.setPointSize(12)
+        self.textBrowser.setFont(font)
+        self.textBrowser.setStyleSheet("QTextBrowser{\n"
+"background-color: rgba(0, 0, 0,0);\n"
+"color: rgb(167, 167, 167);\n"
+"border-radius:0px;}\n"
+" \n"
+"QScrollBar:vertical{\n"
+"background:#484848;\n"
+"padding:0px;\n"
+"border-radius:6px;\n"
+"max-width:12px;\n"
+"}\n"
+" \n"
+" \n"
+"QScrollBar::handle:vertical{\n"
+"background:#CCCCCC;\n"
+"}\n"
+" \n"
+"QScrollBar::handle:hover:vertical,QScrollBar::handle:pressed:vertical{\n"
+"background:#A7A7A7;\n"
+"}\n"
+"QScrollBar::sub-page:vertical{\n"
+"background:#444444;\n"
+"}\n"
+" \n"
+" \n"
+"QScrollBar::add-page:vertical{\n"
+"background:#5B5B5B;\n"
+"}\n"
+" \n"
+"\n"
+"")
         self.textBrowser.setObjectName("textBrowser")
         self.stackedWidget.addWidget(self.page_log)
         self.page_info = QtWidgets.QWidget()
@@ -477,7 +521,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralWidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         self.pushButton.clicked.connect(MainWindow.showMinimized)
         self.pushButton_2.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -488,10 +532,10 @@ class Ui_MainWindow(object):
         self.pushButton_transfer.setText(_translate("MainWindow", "文件传输"))
         self.pushButton_log.setText(_translate("MainWindow", "日志查看"))
         self.pushButton_info.setText(_translate("MainWindow", "软件信息"))
-        self.label_user.setText(_translate("MainWindow", "Superyu"))
         self.label_connect.setText(_translate("MainWindow", "Connected"))
         self.label_ip.setText(_translate("MainWindow", "IP:10.191.1.1"))
         self.label_port.setText(_translate("MainWindow", "Port:6666"))
+        self.label_user.setText(_translate("MainWindow", "Superyu"))
         self.label_user_identity.setText(_translate("MainWindow", "管理员"))
         self.label_4.setText(_translate("MainWindow", "Secure File Transfer"))
         self.pushButton_upload.setText(_translate("MainWindow", "上传"))
@@ -500,11 +544,15 @@ class Ui_MainWindow(object):
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "1"))
         item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "文件名"))
+        item.setText(_translate("MainWindow", "编号"))
         item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "文件大小"))
+        item.setText(_translate("MainWindow", "文件名"))
         item = self.tableWidget.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "文件大小"))
+        item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "上传用户"))
+        item = self.tableWidget.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "文件权限"))
 import ico_rc
 
 

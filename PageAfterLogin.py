@@ -8,7 +8,7 @@ from PyQt5.QtCore import pyqtSlot, Qt
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidget, QTableWidgetItem, QFileDialog
 
 from Ui_PageAfterLogin import Ui_MainWindow
-
+from ClientOperate import Client
 
 class PageAfterLogein(QMainWindow, Ui_MainWindow):
     """
@@ -26,12 +26,25 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setAttribute(Qt.WA_TranslucentBackground)  # 窗体背景透明
         self.setWindowFlags(Qt.FramelessWindowHint)  # 窗口置顶，无边框，在任务栏不显示图标
-        self.tableWidget.setColumnCount(3)
-        # self.tableWidget.setHorizontalHeaderLabels(['文件名','用户','文件大小'])
-        # QTableWidget.resizeColumnsToContents(self.tableWidget)
-        # QTableWidget.resizeRowsToContents(self.tableWidget)
-        item = QTableWidgetItem("11111111111")
-        self.tableWidget.setItem(1, 1, item)
+        self.client = Client()
+
+    def update_transfer_table(self,checkList):
+        total_index = 0
+        for file_list in checkList:
+            print(file_list)
+            for file_index in range(len(file_list["fileName"])):
+                fileName = file_list["fileName"][file_index]
+                fileSize = file_list["fileSize"][file_index]
+                self.tableWidget.setItem(total_index, 0, QTableWidgetItem(str(total_index+1)))
+                self.tableWidget.setItem(total_index, 1, QTableWidgetItem(fileName))
+                self.tableWidget.setItem(total_index, 2, QTableWidgetItem(str(fileSize)))
+                self.tableWidget.setItem(total_index, 3, QTableWidgetItem(str(file_list["usrName"])))
+                total_index += 1
+
+
+
+        pass
+
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton and self.isMaximized() == False:
@@ -78,7 +91,10 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
                                                         image: url(:/ico/ico/cutbutton.png);
                                                         color: rgb(248, 237, 83);
                                                         }  ''')
-        # TODO: 函数对接
+        check_list = self.client.check()
+        self.update_transfer_table(check_list)
+
+
 
     @pyqtSlot()
     def on_pushButton_log_clicked(self):
@@ -109,7 +125,12 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
                                                                 image: url(:/ico/ico/cutbutton.png);
                                                                 color: rgb(248, 237, 83);
                                                                 }  ''')
-        # TODO: 函数对接
+        self.client.audit()
+        f = open("./ClientCache/Serverlog.txt", "r", encoding="utf-8")
+        log = f.read()
+        f.close()
+        self.textBrowser.setText(log)
+
 
     @pyqtSlot()
     def on_pushButton_info_clicked(self):
@@ -149,7 +170,13 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         FileDialog = QFileDialog()
-        filename, _ = FileDialog.getOpenFileName(self, "Choose File", '.', "All Files(*)")
+        filePath, _ = FileDialog.getOpenFileName(self, "Choose File", '.', "All Files(*)")
+
+        self.client.upload(filePath,0)
+        check_list = self.client.check()
+        self.update_transfer_table(check_list)
+
+
 
         # TODO: not implemented yet
 
@@ -159,8 +186,9 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         row = self.tableWidget.currentRow()
-        print(row)
-        # TODO: not implemented yet
+        filename = self.tableWidget.item(row,1).text()
+        self.client.download(filename)
+
 
 
 if __name__ == "__main__":

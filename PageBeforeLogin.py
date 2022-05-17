@@ -10,6 +10,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from PageAfterLogin import PageAfterLogein
 from Ui_PageBeforeLogin import Ui_MainWindow
 
+from ClientOperate import Client
 
 class PageBeforeLogin(QMainWindow, Ui_MainWindow):
     """
@@ -26,6 +27,7 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setAttribute(Qt.WA_TranslucentBackground)  # 窗体背景透明
         self.setWindowFlags(Qt.FramelessWindowHint)  # 窗口置顶，无边框，在任务栏不显示图标
+        self.client = Client()
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton and self.isMaximized() == False:
@@ -49,15 +51,34 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         self.stackedWidget.setCurrentIndex(0)
+        self.pushButton_set_s.setText("设置")
+        self.pushButton_set_s.setStyleSheet('''QPushButton{	                                                                
+                                                                        background-color: rgb(223, 212, 63);
+                                                                        color: rgb(0, 0, 0);
+                                                                    }
+                                                                    QPushButton:pressed{	
+                                                                        padding-left:5px;
+                                                                        padding-top:5px;
+                                                                    }''')
     
     @pyqtSlot()
     def on_pushButton_set_s_clicked(self):
         """
         Slot documentation goes here.
         """
-        ip = self.lineEdit_ip_s.text()
-        port = self.lineEdit_port_s.text()
-        # TODO: 传入设置函数
+        self.client.ip = self.lineEdit_ip_s.text()
+        self.client.port = self.lineEdit_port_s.text()
+        self.pushButton_set_s.setText("设置成功")
+        self.label_ip.setText(f"{self.client.ip}:{self.client.port}")
+        self.pushButton_set_s.setStyleSheet('''QPushButton{	
+                                                                            background-color: rgb(14, 177, 68);
+                                                                            color: rgb(255, 255, 255);
+                                                                        }
+                                                                        QPushButton:pressed{	
+                                                                            padding-left:5px;
+                                                                            padding-top:5px;
+                                                                        }''')
+
 
     
     @pyqtSlot()
@@ -74,11 +95,25 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         """
         username = self.lineEdit_username_l.text()
         password = self.lineEdit_password_l.text()
+        state = self.client.login(username,password)
 
-        if 0 :
+        if state :
+            if state == "admin":
+                PageAfterLogein.label_back.setStyleSheet("image: url(:/ico/ico/redpoint2.png);")
+                PageAfterLogein.label_user.setText(self.client.username)
+                PageAfterLogein.label_user_identity.setText("管理员")
+                PageAfterLogein.label_user.setAlignment(QtCore.Qt.AlignHCenter)
+                PageAfterLogein.label_user_identity.setAlignment(QtCore.Qt.AlignCenter)
+                PageAfterLogein.verticalLayout_5.layout()
+            else:
+                PageAfterLogein.label_back.setStyleSheet("image: url(:/ico/ico/bluepoint2.png);")
+                PageAfterLogein.label_user.setText(self.client.username)
+                PageAfterLogein.label_user_identity.setText("普通用户")
+                PageAfterLogein.label_user.setAlignment(QtCore.Qt.AlignHCenter)
+                PageAfterLogein.label_user_identity.setAlignment(QtCore.Qt.AlignCenter)
+
             PageAfterLogein.show()
             self.close()
-
 
         else:
             self.pushButton_login_l.setText("登录失败")
@@ -91,7 +126,7 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
                                                                     padding-top:5px;
                                                                 }''')
 
-        # TODO: 参数传入登录函数
+
     
     @pyqtSlot()
     def on_pushButton_set_l_clicked(self):
@@ -106,6 +141,15 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         self.stackedWidget.setCurrentIndex(0)
+        self.pushButton_register_r.setText("注册")
+        self.pushButton_register_r.setStyleSheet('''QPushButton{	                                                                
+                                                                        background-color: rgb(223, 212, 63);
+                                                                        color: rgb(0, 0, 0);
+                                                                    }
+                                                                    QPushButton:pressed{	
+                                                                        padding-left:5px;
+                                                                        padding-top:5px;
+                                                                    }''')
     
     @pyqtSlot()
     def on_pushButton_register_r_clicked(self):
@@ -115,7 +159,8 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         username = self.lineEdit_username_r.text()
         password = self.lineEdit_password_r.text()
         rpassword = self.lineEdit_repassword_r.text()
-        if 0:
+        state = self.client.register(username,rpassword)
+        if state:
             self.pushButton_register_r.setText("注册成功")
             self.pushButton_register_r.setStyleSheet('''QPushButton{	
                                                                     background-color: rgb(14, 177, 68);
@@ -135,7 +180,7 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
                                                                                 padding-left:5px;
                                                                                 padding-top:5px;
                                                                             }''')
-        # TODO: 传入注册函数
+
     
     @pyqtSlot(int, int)
     def on_lineEdit_username_r_cursorPositionChanged(self, p0, p1):
@@ -238,27 +283,45 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
                                                                 padding-top:5px;
                                                             }''')
     
+    @pyqtSlot()
+    def on_pushButton_connectLight_clicked(self):
+        """
+        Slot documentation goes here.
+        """
+        connect_sever()
+    
 
 
 def connect_sever():
     try:
+        client = Client()
+
+        client.connect_sever()
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/ico/ico/greenpoint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        PageBeforeLogin.pushButton_greenlight.setIcon(icon)
-        pass
+        PageBeforeLogin.pushButton_connectLight.setIcon(icon)
+        PageBeforeLogin.label_ip.setText(f"{client.ip}:{client.port}")
+        PageBeforeLogin.label_connect.setText("Connected")
+
+        PageAfterLogein.client = client
+        PageBeforeLogin.client = client
+        return client
+
         #建立连接
 
     except:
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/ico/ico/greenpoint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        PageBeforeLogin.pushButton_greenlight.setIcon(icon)
+        icon.addPixmap(QtGui.QPixmap(":/ico/ico/redpoint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        PageBeforeLogin.pushButton_connectLight.setIcon(icon)
 
 if __name__ == "__main__":
     import sys
 
     app = QApplication(sys.argv)
     PageBeforeLogin = PageBeforeLogin()
+
     PageAfterLogein = PageAfterLogein()
     connect_sever()
+
     PageBeforeLogin.show()
     sys.exit(app.exec_())

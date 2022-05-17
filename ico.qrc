@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="ico">
+    <file>ico/bluepoint2.png</file>
     <file>ico/cutbutton.png</file>
     <file>ico/redpoint.png</file>
     <file>ico/user1.png</file>
