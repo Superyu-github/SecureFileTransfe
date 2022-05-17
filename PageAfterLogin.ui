@@ -211,7 +211,7 @@ padding-bottom:5px;
                <x>0</x>
                <y>110</y>
                <width>181</width>
-               <height>191</height>
+               <height>221</height>
               </rect>
              </property>
              <property name="sizePolicy">
@@ -289,7 +289,7 @@ background-color:rgba(0, 0, 0,0);
 color: rgb(199, 151, 7);
 }
 QPushButton:pressed{	
-image: url(:/ico/ico/cutbutton.png);
+image: url(:/ico/ico/cutbutton2.png);
 color: rgb(248, 237, 83);
 }</string>
                 </property>
@@ -297,52 +297,6 @@ color: rgb(248, 237, 83);
                  <string>文件传输</string>
                 </property>
                 <property name="checkable">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_log">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>851tegakizatsu</family>
-                  <pointsize>15</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">
-QPushButton{	border-radius:30px;
-color: rgb(199, 151, 7);
-}
-QPushButton:pressed{	
-image: url(:/ico/ico/cutbutton.png);
-color: rgb(248, 237, 83);
-}</string>
-                </property>
-                <property name="text">
-                 <string>日志查看</string>
-                </property>
-                <property name="checkable">
-                 <bool>true</bool>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-                <property name="autoExclusive">
-                 <bool>true</bool>
-                </property>
-                <property name="autoDefault">
-                 <bool>false</bool>
-                </property>
-                <property name="default">
                  <bool>false</bool>
                 </property>
                </widget>
@@ -369,7 +323,7 @@ QPushButton{	border-radius:30px;
 color: rgb(199, 151, 7);
 }
 QPushButton:pressed{	
-image: url(:/ico/ico/cutbutton.png);
+image: url(:/ico/ico/cutbutton2.png);
 color: rgb(248, 237, 83);
 }</string>
                 </property>
@@ -378,10 +332,56 @@ color: rgb(248, 237, 83);
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_log">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>851tegakizatsu</family>
+                  <pointsize>15</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">
+QPushButton{	border-radius:30px;
+color: rgb(199, 151, 7);
+}
+QPushButton:pressed{	
+image: url(:/ico/ico/cutbutton2.png);
+color: rgb(248, 237, 83);
+}</string>
+                </property>
+                <property name="text">
+                 <string>日志查看</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+                <property name="autoDefault">
+                 <bool>false</bool>
+                </property>
+                <property name="default">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
              </layout>
-             <zorder>pushButton_log</zorder>
              <zorder>pushButton_info</zorder>
              <zorder>pushButton_transfer</zorder>
+             <zorder>pushButton_log</zorder>
             </widget>
             <widget class="QLabel" name="label_back">
              <property name="geometry">
@@ -660,7 +660,7 @@ border-radius:5px;
                     <property name="geometry">
                      <rect>
                       <x>110</x>
-                      <y>300</y>
+                      <y>290</y>
                       <width>111</width>
                       <height>41</height>
                      </rect>
@@ -689,8 +689,8 @@ QPushButton:pressed{
                    <widget class="QPushButton" name="pushButton_download">
                     <property name="geometry">
                      <rect>
-                      <x>370</x>
-                      <y>300</y>
+                      <x>390</x>
+                      <y>290</y>
                       <width>111</width>
                       <height>41</height>
                      </rect>
@@ -720,7 +720,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>10</x>
-                      <y>20</y>
+                      <y>10</y>
                       <width>641</width>
                       <height>261</height>
                      </rect>
@@ -739,7 +739,7 @@ QPushButton:pressed{
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QTableWidget{
-color:rgba(255, 255, 255,100);
+color:rgb(255, 255, 255);
 	font: 12pt &quot;黑体&quot;;
 background:rgba(8, 74, 90,100);
 border:0px solid #242424;
@@ -748,12 +748,13 @@ gridline-color:rgba(8, 74, 90,100);
 }
  
 QTableWidget::item:selected{
-color:#DCDCDC;
-background: rgb(223, 212, 63);
+color: rgb(88, 72, 44);
+
+background: rgb(252, 236, 12);
 }
  
 QTableWidget::item:hover{
-background:rgb(88, 72, 44);;
+
 }
 QHeaderView::section{
 text-align:center;
@@ -928,6 +929,36 @@ background:#5B5B5B;
                       <string>文件权限</string>
                      </property>
                     </column>
+                   </widget>
+                   <widget class="QPushButton" name="pushButton_upload_2">
+                    <property name="geometry">
+                     <rect>
+                      <x>540</x>
+                      <y>290</y>
+                      <width>71</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>851tegakizatsu</family>
+                      <pointsize>15</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">
+QPushButton{	
+background-color: rgb(207, 44, 24);
+color: rgb(255, 255, 255);
+}
+QPushButton:pressed{	
+	padding-left:5px;
+	padding-top:5px;
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>上传</string>
+                    </property>
                    </widget>
                   </widget>
                   <widget class="QWidget" name="page_log">

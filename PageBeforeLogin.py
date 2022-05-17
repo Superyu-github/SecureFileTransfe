@@ -28,6 +28,9 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         self.setAttribute(Qt.WA_TranslucentBackground)  # 窗体背景透明
         self.setWindowFlags(Qt.FramelessWindowHint)  # 窗口置顶，无边框，在任务栏不显示图标
         self.client = Client()
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/ico/ico/file.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.setWindowIcon(icon)
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton and self.isMaximized() == False:
@@ -98,6 +101,8 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         state = self.client.login(username,password)
 
         if state :
+            PageAfterLogein.label_ip.setText(f"IP:{self.client.ip}")
+            PageAfterLogein.label_port.setText(f"Port:{str(self.client.port)}")
             if state == "admin":
                 PageAfterLogein.label_back.setStyleSheet("image: url(:/ico/ico/redpoint2.png);")
                 PageAfterLogein.label_user.setText(self.client.username)
@@ -105,12 +110,15 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
                 PageAfterLogein.label_user.setAlignment(QtCore.Qt.AlignHCenter)
                 PageAfterLogein.label_user_identity.setAlignment(QtCore.Qt.AlignCenter)
                 PageAfterLogein.verticalLayout_5.layout()
+
+
             else:
                 PageAfterLogein.label_back.setStyleSheet("image: url(:/ico/ico/bluepoint2.png);")
                 PageAfterLogein.label_user.setText(self.client.username)
                 PageAfterLogein.label_user_identity.setText("普通用户")
                 PageAfterLogein.label_user.setAlignment(QtCore.Qt.AlignHCenter)
                 PageAfterLogein.label_user_identity.setAlignment(QtCore.Qt.AlignCenter)
+                PageAfterLogein.pushButton_log.close()
 
             PageAfterLogein.show()
             self.close()
@@ -294,18 +302,18 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
 
 def connect_sever():
     try:
-        client = Client()
 
-        client.connect_sever()
+
+        PageBeforeLogin.client.connect_sever()
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/ico/ico/greenpoint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         PageBeforeLogin.pushButton_connectLight.setIcon(icon)
-        PageBeforeLogin.label_ip.setText(f"{client.ip}:{client.port}")
+        PageBeforeLogin.label_ip.setText(f"{PageBeforeLogin.client.ip}:{PageBeforeLogin.client.port}")
         PageBeforeLogin.label_connect.setText("Connected")
 
-        PageAfterLogein.client = client
-        PageBeforeLogin.client = client
-        return client
+        PageAfterLogein.client = PageBeforeLogin.client
+        # PageBeforeLogin.client = client
+        # return client
 
         #建立连接
 
@@ -319,7 +327,6 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     PageBeforeLogin = PageBeforeLogin()
-
     PageAfterLogein = PageAfterLogein()
     connect_sever()
 

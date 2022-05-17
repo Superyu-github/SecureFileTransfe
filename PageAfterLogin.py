@@ -26,16 +26,21 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setAttribute(Qt.WA_TranslucentBackground)  # 窗体背景透明
         self.setWindowFlags(Qt.FramelessWindowHint)  # 窗口置顶，无边框，在任务栏不显示图标
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/ico/ico/file.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.setWindowIcon(icon)
         self.client = Client()
 
+
     def update_transfer_table(self,checkList):
+
         total_index = 0
         for file_list in checkList:
             print(file_list)
             for file_index in range(len(file_list["fileName"])):
                 fileName = file_list["fileName"][file_index]
                 fileSize = file_list["fileSize"][file_index]
-                self.tableWidget.setRowCount(total_index+1)
+                self.tableWidget.setRowCount(total_index+10)
                 self.tableWidget.setItem(total_index, 0, QTableWidgetItem(str(total_index+1)))
                 self.tableWidget.setItem(total_index, 1, QTableWidgetItem(fileName))
                 self.tableWidget.setItem(total_index, 2, QTableWidgetItem(str(fileSize)))
@@ -176,6 +181,15 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         self.client.upload(filePath,1)
         check_list = self.client.check()
         self.update_transfer_table(check_list)
+        self.pushButton_upload.setText("上传成功")
+        self.pushButton_upload.setStyleSheet('''QPushButton{	
+                                                                                    background-color: rgb(14, 177, 68);
+                                                                                    color: rgb(255, 255, 255);
+                                                                                }
+                                                                                QPushButton:pressed{	
+                                                                                    padding-left:5px;
+                                                                                    padding-top:5px;
+                                                                                }''')
 
 
 
@@ -192,6 +206,15 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         username = self.tableWidget.item(row,3).text()
         # print(username)
         self.client.download(filename, username)
+        self.pushButton_download.setText("下载成功")
+        self.pushButton_download.setStyleSheet('''QPushButton{	
+                                                                                            background-color: rgb(14, 177, 68);
+                                                                                            color: rgb(255, 255, 255);
+                                                                                        }
+                                                                                        QPushButton:pressed{	
+                                                                                            padding-left:5px;
+                                                                                            padding-top:5px;
+                                                                                        }''')
 
 
 

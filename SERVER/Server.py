@@ -47,12 +47,11 @@ class server_ssl:
                         cursor.execute(sql)
                         data = cursor.fetchone()
                         if data:
-                            listResult = os.path.dirname(__file__)+'/result.txt'
+                            # listResult = os.path.dirname(__file__)+'/result.txt'
                             # 定义文件头信息，包含文件名和文件大小
                             header = {
                                 'Feedback': 'Login',
                                 'stat': 'Success',
-                                'fileSize': os.stat(listResult).st_size,
                                 'user': username,
                                 'authority': data[0]
                             }
@@ -60,13 +59,6 @@ class server_ssl:
                             fhead = struct.pack('128s', header_hex)
                             connection.send(fhead)
 
-                            fo = open(listResult, 'rb')
-                            while True:
-                                filedata = fo.read(1024)
-                                if not filedata:
-                                    break
-                                connection.send(filedata)
-                            fo.close()
                             print('%s login successfully')
 
                             loginlog = '\n%s try to login at "%s" , Stat: Success ' % \
@@ -74,24 +66,16 @@ class server_ssl:
                             with open(os.path.dirname(__file__)+'/Serverlog.txt', 'a', encoding='utf-8') as list:
                                 list.write(loginlog)
                         else:
-                            listResult = os.path.dirname(__file__)+'/result.txt'
+                            # listResult = os.path.dirname(__file__)+'/result.txt'
                             header = {
                                 'Feedback': 'Login',
                                 'stat': 'Fail',
-                                'fileSize': os.stat(listResult).st_size,
                                 'user': username,
                                 'authority': data
                             }
                             header_hex = bytes(json.dumps(header).encode('utf-8'))
                             fhead = struct.pack('128s', header_hex)
                             connection.send(fhead)
-                            # fo = open(listResult, 'rb')
-                            # while True:
-                            #     filedata = fo.read(1024)
-                            #     if not filedata:
-                            #         break
-                            #     connection.send(filedata)
-                            # fo.close()
                             loginlog = '\n%s try to login at "%s" , Stat: Fail ' % \
                                         (username, time)
                             with open(os.path.dirname(__file__)+'/Serverlog.txt', 'a', encoding='utf-8') as list:
@@ -257,10 +241,10 @@ class server_ssl:
                         else:
                             fileSize = "%.2f Gb"%(fileSize/1024.0/1024.0/1024.0)
 
-                        uploadmsg = '{"文件名": "%s", "上传者": "%s", "上传时间": "%s", "大小": "%s"}\n'%\
-                                    (fileName,user,time,fileSize)
-                        with open(os.path.dirname(__file__)+'/result.txt','a',encoding='utf-8') as list:
-                            list.write(uploadmsg)
+                        # uploadmsg = '{"文件名": "%s", "上传者": "%s", "上传时间": "%s", "大小": "%s"}\n'%\
+                        #             (fileName,user,time,fileSize)
+                        # with open(os.path.dirname(__file__)+'/result.txt','a',encoding='utf-8') as list:
+                        #     list.write(uploadmsg)
 
                         uploadlog = '\n%s upload a file "%s" at %s' % \
                                         (user, fileName, time)

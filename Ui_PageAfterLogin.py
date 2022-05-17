@@ -118,7 +118,7 @@ class Ui_MainWindow(object):
         self.frame_left.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_left.setObjectName("frame_left")
         self.frame_operate = QtWidgets.QFrame(self.frame_left)
-        self.frame_operate.setGeometry(QtCore.QRect(0, 110, 181, 191))
+        self.frame_operate.setGeometry(QtCore.QRect(0, 110, 181, 221))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -154,39 +154,12 @@ class Ui_MainWindow(object):
 "color: rgb(199, 151, 7);\n"
 "}\n"
 "QPushButton:pressed{    \n"
-"image: url(:/ico/ico/cutbutton.png);\n"
+"image: url(:/ico/ico/cutbutton2.png);\n"
 "color: rgb(248, 237, 83);\n"
 "}")
         self.pushButton_transfer.setCheckable(False)
         self.pushButton_transfer.setObjectName("pushButton_transfer")
         self.verticalLayout_2.addWidget(self.pushButton_transfer)
-        self.pushButton_log = QtWidgets.QPushButton(self.frame_operate)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_log.sizePolicy().hasHeightForWidth())
-        self.pushButton_log.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("851tegakizatsu")
-        font.setPointSize(15)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_log.setFont(font)
-        self.pushButton_log.setStyleSheet("\n"
-"QPushButton{    border-radius:30px;\n"
-"color: rgb(199, 151, 7);\n"
-"}\n"
-"QPushButton:pressed{    \n"
-"image: url(:/ico/ico/cutbutton.png);\n"
-"color: rgb(248, 237, 83);\n"
-"}")
-        self.pushButton_log.setCheckable(True)
-        self.pushButton_log.setChecked(False)
-        self.pushButton_log.setAutoExclusive(True)
-        self.pushButton_log.setAutoDefault(False)
-        self.pushButton_log.setDefault(False)
-        self.pushButton_log.setObjectName("pushButton_log")
-        self.verticalLayout_2.addWidget(self.pushButton_log)
         self.pushButton_info = QtWidgets.QPushButton(self.frame_operate)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -204,14 +177,41 @@ class Ui_MainWindow(object):
 "color: rgb(199, 151, 7);\n"
 "}\n"
 "QPushButton:pressed{    \n"
-"image: url(:/ico/ico/cutbutton.png);\n"
+"image: url(:/ico/ico/cutbutton2.png);\n"
 "color: rgb(248, 237, 83);\n"
 "}")
         self.pushButton_info.setObjectName("pushButton_info")
         self.verticalLayout_2.addWidget(self.pushButton_info)
-        self.pushButton_log.raise_()
+        self.pushButton_log = QtWidgets.QPushButton(self.frame_operate)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton_log.sizePolicy().hasHeightForWidth())
+        self.pushButton_log.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("851tegakizatsu")
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_log.setFont(font)
+        self.pushButton_log.setStyleSheet("\n"
+"QPushButton{    border-radius:30px;\n"
+"color: rgb(199, 151, 7);\n"
+"}\n"
+"QPushButton:pressed{    \n"
+"image: url(:/ico/ico/cutbutton2.png);\n"
+"color: rgb(248, 237, 83);\n"
+"}")
+        self.pushButton_log.setCheckable(True)
+        self.pushButton_log.setChecked(False)
+        self.pushButton_log.setAutoExclusive(True)
+        self.pushButton_log.setAutoDefault(False)
+        self.pushButton_log.setDefault(False)
+        self.pushButton_log.setObjectName("pushButton_log")
+        self.verticalLayout_2.addWidget(self.pushButton_log)
         self.pushButton_info.raise_()
         self.pushButton_transfer.raise_()
+        self.pushButton_log.raise_()
         self.label_back = QtWidgets.QLabel(self.frame_left)
         self.label_back.setGeometry(QtCore.QRect(0, 20, 91, 61))
         self.label_back.setStyleSheet("image: url(:/ico/ico/bluepoint2.png);")
@@ -361,7 +361,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_upload.setObjectName("pushButton_upload")
         self.pushButton_download = QtWidgets.QPushButton(self.page_transfer)
-        self.pushButton_download.setGeometry(QtCore.QRect(370, 300, 111, 41))
+        self.pushButton_download.setGeometry(QtCore.QRect(390, 300, 111, 41))
         font = QtGui.QFont()
         font.setFamily("851tegakizatsu")
         font.setPointSize(15)
@@ -383,7 +383,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.tableWidget.setAutoFillBackground(False)
         self.tableWidget.setStyleSheet("QTableWidget{\n"
-"color:rgba(255, 255, 255,100);\n"
+"color:rgb(255, 255, 255);\n"
 "    font: 12pt \"黑体\";\n"
 "background:rgba(8, 74, 90,100);\n"
 "border:0px solid #242424;\n"
@@ -392,12 +392,13 @@ class Ui_MainWindow(object):
 "}\n"
 " \n"
 "QTableWidget::item:selected{\n"
-"color:#DCDCDC;\n"
-"background: rgb(223, 212, 63);\n"
+"color: rgb(88, 72, 44);\n"
+"\n"
+"background: rgb(252, 236, 12);\n"
 "}\n"
 " \n"
 "QTableWidget::item:hover{\n"
-"background:rgb(88, 72, 44);;\n"
+"\n"
 "}\n"
 "QHeaderView::section{\n"
 "text-align:center;\n"
@@ -530,8 +531,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton_transfer.setText(_translate("MainWindow", "文件传输"))
-        self.pushButton_log.setText(_translate("MainWindow", "日志查看"))
         self.pushButton_info.setText(_translate("MainWindow", "软件信息"))
+        self.pushButton_log.setText(_translate("MainWindow", "日志查看"))
         self.label_connect.setText(_translate("MainWindow", "Connected"))
         self.label_ip.setText(_translate("MainWindow", "IP:10.191.1.1"))
         self.label_port.setText(_translate("MainWindow", "Port:6666"))

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import socket
-import time, os, struct, json, tkinter, threading, rsa
+import time, os, struct, json, threading, rsa
 
 file_dic = ['file_encrypted', 'AES_key_encrypted', 'file_iv_encrypted', 'file_signature_encrypted',
             'file_signature_encrypted']
@@ -14,11 +14,11 @@ class Client:
         self.username = ''
         self.password = ''
         self.authority = 0
-        self.ip = ''
-        self.port = 0
+        self.ip = '127.0.0.1'
+        self.port = 6666
 
     def connect_sever(self):
-        self.ssock = socket.create_connection(('127.0.0.1', 6666))
+        self.ssock = socket.create_connection((self.ip, self.port))
     def login(self, username, password):
         '''登录'''
         self.username = username
@@ -46,24 +46,7 @@ class Client:
             stat = header['stat']
             if stat == 'Success':
                 self.authority = header['authority']
-                fileSize = header['fileSize']
-                filenewname = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'result.txt')
-                print('file new name is %s, filesize is %s' % (filenewname, fileSize))
-                recvd_size = 0  # 定义接收了的文件大小
-                file = open(filenewname, 'wb')
-                print('start receiving...')
-                while not recvd_size == fileSize:
-                    if fileSize - recvd_size > 1024:
-                        rdata = self.ssock.recv(1024)
-                        recvd_size += len(rdata)
-                    else:
-                        rdata = self.ssock.recv(fileSize - recvd_size)
-                        recvd_size = fileSize
-                    file.write(rdata)
-                file.close()
-                print('receive done')
-                # self.ssock.close()
-                return True
+                return self.authority
 
             else:
                 return False
@@ -596,9 +579,4 @@ def rsa_public_decrypt(msg, file_rsa_public_name):
     return msg_decrypted
 
 
-# if __name__ == "__main__":
-#     client = client_no_ssl()
-#     filepath = ''  # 绝对路径，如：C:\\User\\NIU\\Desktop\\test.txt
-#     client.login('andy', '123')
-#     client.audit()
-#     client.upload(filepath, 1)
+
