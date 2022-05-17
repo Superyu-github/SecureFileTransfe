@@ -83,7 +83,7 @@ class Client:
             if useAES == 1:
                 file = open(filepath, 'rb')
                 file_msg = file.read()
-                aes_key_path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'AES_key')
+                aes_key_path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'AES_key')
                 file_aes_key = open(aes_key_path, 'rb')  # 打开AES秘钥文件
                 aes_key = file_aes_key.read()
                 from Cryptodome.Cipher import AES
@@ -92,12 +92,12 @@ class Client:
                 iv = Random.new().read(AES.block_size)  # 使用Crypto中Random模块,读取16字节数据作为iv的值，AES分块大小固定为16字节
                 print("开始对原文件进行AES加密......")
                 file_encrypted_msg, fill_number = aes_encrypt(file_msg, aes_key, iv)
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_encrypted')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_encrypted')
                 file_encrypted = open(path, 'wb')
                 file_encrypted.write(file_encrypted_msg)
                 file_encrypted.close()
                 print("原文件AES加密完成！")
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'fill_number')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'fill_number')
                 file_fill_number = open(path, 'w')
                 file_fill_number.write(str(fill_number))
                 file_fill_number.close()
@@ -108,30 +108,30 @@ class Client:
                 file.close()
 
                 print("开始对MD5摘要签名")
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'Alice_private_key.pem')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'Alice_private_key.pem')
                 signature_msg = rsa_private_encrypt(md5_msg, path)
                 print("MD5摘要签名完成！")
                 print("对签名进行AES加密")
                 signature_encrypted_msg, number = aes_encrypt(signature_msg, aes_key, iv)
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_signature_encrypted')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_signature_encrypted')
                 file_signature_encrypted = open(path, 'wb')
                 file_signature_encrypted.write(signature_encrypted_msg)
                 file_signature_encrypted.close()
                 print("签名AES加密完成！")
 
                 print("开始对AES秘钥进行RSA加密")
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'Bob_public_key.pem')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'Bob_public_key.pem')
                 print("开始对AES秘钥进行RSA加密")
                 aes_key_encrypted = rsa_public_encrypt(aes_key, path)
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'AES_key_encrypted')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'AES_key_encrypted')
                 file_aes_key_encrypted = open(path, 'wb')
                 file_aes_key_encrypted.write(aes_key_encrypted)
                 file_aes_key_encrypted.close()
                 print("AES秘钥RSA加密完成！")
                 print("开始对iv进行RSA加密")
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'Bob_public_key.pem')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'Bob_public_key.pem')
                 iv_encrypted = rsa_public_encrypt(iv, path)
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_iv_encrypted')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_iv_encrypted')
                 file_iv_encrypted = open(path, 'wb')
                 file_iv_encrypted.write(iv_encrypted)
                 file_iv_encrypted.close()
@@ -147,11 +147,11 @@ class Client:
                 print("5.填充位数文件：fill_number")
                 print("\n最后请删除程序所在路径下加入和生成的文件，谢谢！")
 
-                path1 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_encrypted')
-                path2 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'AES_key_encrypted')
-                path3 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_iv_encrypted')
-                path4 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_signature_encrypted')
-                path5 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'fill_number')
+                path1 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_encrypted')
+                path2 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'AES_key_encrypted')
+                path3 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_iv_encrypted')
+                path4 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_signature_encrypted')
+                path5 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'fill_number')
                 size1 = os.stat(path1).st_size
                 size2 = os.stat(path2).st_size
                 size3 = os.stat(path3).st_size
@@ -178,7 +178,7 @@ class Client:
             self.ssock.send(fhead)
 
             if useAES == 1:
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_encrypted')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_encrypted')
                 f1 = open(path, 'rb')
                 while True:
                     filedata = f1.read(1024)
@@ -186,7 +186,7 @@ class Client:
                         break
                     self.ssock.send(filedata)
                 f1.close()
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'AES_key_encrypted')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'AES_key_encrypted')
                 f2 = open(path, 'rb')
                 while True:
                     filedata = f2.read(1024)
@@ -194,7 +194,7 @@ class Client:
                         break
                     self.ssock.send(filedata)
                 f2.close()
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_iv_encrypted')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_iv_encrypted')
                 f3 = open(path, 'rb')
                 while True:
                     filedata = f3.read(1024)
@@ -202,7 +202,7 @@ class Client:
                         break
                     self.ssock.send(filedata)
                 f3.close()
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_signature_encrypted')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_signature_encrypted')
                 f4 = open(path, 'rb')
                 while True:
                     filedata = f4.read(1024)
@@ -210,7 +210,7 @@ class Client:
                         break
                     self.ssock.send(filedata)
                 f4.close()
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'fill_number')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'fill_number')
                 f5 = open(path, 'rb')
                 while True:
                     filedata = f5.read(1024)
@@ -267,7 +267,7 @@ class Client:
                 fileSize5 = header['fileSize5']
 
                 recvd_size = 0  # 定义接收了的文件大小
-                path1 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_encrypted')
+                path1 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_encrypted')
                 file1 = open(path1, 'wb')
                 print('start receiving...')
                 while not recvd_size == fileSize1:
@@ -281,7 +281,7 @@ class Client:
                 file1.close()
 
                 recvd_size = 0  # 定义接收了的文件大小
-                path2 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'AES_key_encrypted')
+                path2 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'AES_key_encrypted')
                 file2 = open(path2, 'wb')
                 print('start receiving...')
                 while not recvd_size == fileSize2:
@@ -295,7 +295,7 @@ class Client:
                 file2.close()
 
                 recvd_size = 0  # 定义接收了的文件大小
-                path3 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_iv_encrypted')
+                path3 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_iv_encrypted')
                 file3 = open(path3, 'wb')
                 print('start receiving...')
                 while not recvd_size == fileSize3:
@@ -309,7 +309,7 @@ class Client:
                 file3.close()
 
                 recvd_size = 0  # 定义接收了的文件大小
-                path4 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'file_signature_encrypted')
+                path4 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'file_signature_encrypted')
                 file4 = open(path4, 'wb')
                 print('start receiving...')
                 while not recvd_size == fileSize4:
@@ -323,7 +323,7 @@ class Client:
                 file4.close()
 
                 recvd_size = 0  # 定义接收了的文件大小
-                path5 = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'fill_number')
+                path5 = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'fill_number')
                 file5 = open(path5, 'wb')
                 print('start receiving...')
                 while not recvd_size == fileSize5:
@@ -342,7 +342,7 @@ class Client:
                 iv_encrypted = file_iv_encrypted.read()
 
                 print("开始解密AES秘钥")
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'Alice_private_key.pem')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'Alice_private_key.pem')
                 aes_key = rsa_private_decrypt(aes_key_encrypted, path)
                 print("AES秘钥解密完成！")
                 print("开始解密AES初始化向量")
@@ -374,7 +374,7 @@ class Client:
                 file_aes_key_encrypted.close()  # AES解密完成，关闭相关文件
                 file_iv_encrypted.close()
 
-                path = os.path.join(os.path.dirname(__file__) + '/ClientDownload/', 'Bob_public_key.pem')
+                path = os.path.join(os.path.dirname(__file__) + '/ClientCache/', 'Bob_public_key.pem')
                 print("开始签名文件RSA解密")
                 with open(path, 'r') as f:
                     pubkey = rsa.PublicKey.load_pkcs1(f.read().encode())

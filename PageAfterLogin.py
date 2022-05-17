@@ -35,6 +35,7 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
             for file_index in range(len(file_list["fileName"])):
                 fileName = file_list["fileName"][file_index]
                 fileSize = file_list["fileSize"][file_index]
+                self.tableWidget.setRowCount(total_index+1)
                 self.tableWidget.setItem(total_index, 0, QTableWidgetItem(str(total_index+1)))
                 self.tableWidget.setItem(total_index, 1, QTableWidgetItem(fileName))
                 self.tableWidget.setItem(total_index, 2, QTableWidgetItem(str(fileSize)))

@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="ico">
+    <file>ico/bluepoint2.png</file>
+    <file>ico/cutbutton.png</file>
+    <file>ico/redpoint.png</file>
+    <file>ico/user1.png</file>
+    <file>ico/redpoint2.png</file>
+    <file>ico/user.png</file>
+    <file>ico/greenpoint2.png</file>
+    <file>ico/close.png</file>
+    <file>ico/greenpoint.png</file>
+    <file>ico/minimize.png</file>
+    <file>ico/set.png</file>
+  </qresource>
+</RCC>
