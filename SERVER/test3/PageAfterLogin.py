@@ -48,13 +48,13 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
                 self.tableWidget.setItem(total_index, 4, QTableWidgetItem(str(file_list["permission"])))
                 total_index += 1
 
-    def change_pushButton_permission_state(self,permission):
-        if permission == "public":
+    def change_pushButton_permission_state(self,premission):
+        if premission == "public":
             self.pushButton_permission.setText("公有")
             self.pushButton_permission.setStyleSheet('''background-color: rgb(71, 141, 65);
                                                                 color: rgb(255, 255, 255);
                                                                 border-radius:4px''')
-        elif permission == "private":
+        elif premission == "private":
             self.pushButton_permission.setText("私有")
             self.pushButton_permission.setStyleSheet('''background-color: rgb(197, 68, 72);
                                                                 color: rgb(255, 255, 255);
@@ -110,7 +110,6 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
                                                         }  ''')
         check_list = self.client.check()
         self.update_transfer_table(check_list)
-        self.change_pushButton_permission_state(self.client.permission)
 
 
 
@@ -216,7 +215,7 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         row = self.tableWidget.currentRow()
         filename = self.tableWidget.item(row,1).text()
         username = self.tableWidget.item(row,3).text()
-
+        # print(username)
         self.client.download(filename, username)
         self.pushButton_download.setText("下载成功")
         self.pushButton_download.setStyleSheet('''QPushButton{	
@@ -234,10 +233,8 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        self.client.permission = self.client.change()
-        # print(self.client.permission)
-        # self.change_pushButton_permission_state(permission)
-        self.on_pushButton_transfer_clicked()
+        premission = self.client.change()
+        self.change_pushButton_permission_state(premission)
 
 
 

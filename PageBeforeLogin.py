@@ -109,7 +109,11 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
                 PageAfterLogein.label_user_identity.setText("管理员")
                 PageAfterLogein.label_user.setAlignment(QtCore.Qt.AlignHCenter)
                 PageAfterLogein.label_user_identity.setAlignment(QtCore.Qt.AlignCenter)
-                PageAfterLogein.verticalLayout_5.layout()
+                # PageAfterLogein.verticalLayout_5.layout()
+                PageAfterLogein.on_pushButton_transfer_clicked()
+
+
+
 
 
             else:
@@ -118,7 +122,9 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
                 PageAfterLogein.label_user_identity.setText("普通用户")
                 PageAfterLogein.label_user.setAlignment(QtCore.Qt.AlignHCenter)
                 PageAfterLogein.label_user_identity.setAlignment(QtCore.Qt.AlignCenter)
+                PageAfterLogein.on_pushButton_transfer_clicked()
                 PageAfterLogein.pushButton_log.close()
+
 
             PageAfterLogein.show()
             self.close()

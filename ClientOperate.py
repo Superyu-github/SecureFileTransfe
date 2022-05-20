@@ -13,12 +13,14 @@ class Client:
 
         self.username = ''
         self.password = ''
-        self.authority = 0
+        self.authority = ''
+        self.permission = ''
         self.ip = '127.0.0.1'
         self.port = 6666
 
     def connect_sever(self):
         self.ssock = socket.create_connection((self.ip, self.port))
+
     def login(self, username, password):
         '''登录'''
         self.username = username
@@ -46,6 +48,7 @@ class Client:
             stat = header['stat']
             if stat == 'Success':
                 self.authority = header['authority']
+                self.permission = header['permission']
                 return self.authority
 
             else:
@@ -438,7 +441,7 @@ class Client:
             if stat == 'Success':
                 print("Before::\t", header['beforeAtt'])
                 print("Alfer ::\t", header['afterAtt'])
-                return True
+                return header['afterAtt']
             else:
                 print("Change Error")
                 return False

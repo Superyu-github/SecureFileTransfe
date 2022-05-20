@@ -334,6 +334,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(8)
         sizePolicy.setHeightForWidth(self.frame_right_bottom.sizePolicy().hasHeightForWidth())
         self.frame_right_bottom.setSizePolicy(sizePolicy)
+        self.frame_right_bottom.setWhatsThis("")
         self.frame_right_bottom.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_right_bottom.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_right_bottom.setObjectName("frame_right_bottom")
@@ -345,7 +346,7 @@ class Ui_MainWindow(object):
         self.page_transfer = QtWidgets.QWidget()
         self.page_transfer.setObjectName("page_transfer")
         self.pushButton_upload = QtWidgets.QPushButton(self.page_transfer)
-        self.pushButton_upload.setGeometry(QtCore.QRect(110, 300, 111, 41))
+        self.pushButton_upload.setGeometry(QtCore.QRect(110, 350, 111, 41))
         font = QtGui.QFont()
         font.setFamily("851tegakizatsu")
         font.setPointSize(15)
@@ -361,7 +362,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_upload.setObjectName("pushButton_upload")
         self.pushButton_download = QtWidgets.QPushButton(self.page_transfer)
-        self.pushButton_download.setGeometry(QtCore.QRect(390, 300, 111, 41))
+        self.pushButton_download.setGeometry(QtCore.QRect(390, 350, 111, 41))
         font = QtGui.QFont()
         font.setFamily("851tegakizatsu")
         font.setPointSize(15)
@@ -377,7 +378,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_download.setObjectName("pushButton_download")
         self.tableWidget = QtWidgets.QTableWidget(self.page_transfer)
-        self.tableWidget.setGeometry(QtCore.QRect(10, 20, 641, 261))
+        self.tableWidget.setGeometry(QtCore.QRect(10, 50, 641, 261))
         self.tableWidget.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.tableWidget.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         self.tableWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -467,6 +468,45 @@ class Ui_MainWindow(object):
         self.tableWidget.verticalHeader().setVisible(False)
         self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
         self.tableWidget.verticalHeader().setSortIndicatorShown(False)
+        self.frame_permission = QtWidgets.QFrame(self.page_transfer)
+        self.frame_permission.setGeometry(QtCore.QRect(430, 0, 191, 41))
+        self.frame_permission.setStyleSheet("\n"
+"\n"
+"background-color: rgb(88, 72, 44);\n"
+"border-radius:10px;")
+        self.frame_permission.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_permission.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_permission.setObjectName("frame_permission")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.frame_permission)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.label_permission = QtWidgets.QLabel(self.frame_permission)
+        font = QtGui.QFont()
+        font.setFamily("851tegakizatsu")
+        font.setPointSize(14)
+        self.label_permission.setFont(font)
+        self.label_permission.setStyleSheet("color: rgb(255, 255, 255);\n"
+"")
+        self.label_permission.setObjectName("label_permission")
+        self.horizontalLayout_6.addWidget(self.label_permission)
+        self.pushButton_permission = QtWidgets.QPushButton(self.frame_permission)
+        font = QtGui.QFont()
+        font.setFamily("851tegakizatsu")
+        font.setPointSize(15)
+        self.pushButton_permission.setFont(font)
+        self.pushButton_permission.setToolTip("")
+        self.pushButton_permission.setStyleSheet("\n"
+"QPushButton{    \n"
+"background-color: rgb(71, 141, 65);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:4px;\n"
+"}\n"
+"QPushButton:pressed{    \n"
+"    background-color: rgb(197, 68, 72);\n"
+"    border-radius:4px;\n"
+"}")
+        self.pushButton_permission.setCheckable(True)
+        self.pushButton_permission.setObjectName("pushButton_permission")
+        self.horizontalLayout_6.addWidget(self.pushButton_permission)
         self.stackedWidget.addWidget(self.page_transfer)
         self.page_log = QtWidgets.QWidget()
         self.page_log.setObjectName("page_log")
@@ -554,6 +594,9 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "上传用户"))
         item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "文件权限"))
+        self.label_permission.setText(_translate("MainWindow", "文件库权限："))
+        self.pushButton_permission.setStatusTip(_translate("MainWindow", "111"))
+        self.pushButton_permission.setText(_translate("MainWindow", "私有"))
 import ico_rc
 
 

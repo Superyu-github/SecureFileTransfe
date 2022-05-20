@@ -640,6 +640,9 @@ border-radius:5px;
                  <verstretch>8</verstretch>
                 </sizepolicy>
                </property>
+               <property name="whatsThis">
+                <string/>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
@@ -660,7 +663,7 @@ border-radius:5px;
                     <property name="geometry">
                      <rect>
                       <x>110</x>
-                      <y>290</y>
+                      <y>350</y>
                       <width>111</width>
                       <height>41</height>
                      </rect>
@@ -690,7 +693,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>390</x>
-                      <y>290</y>
+                      <y>350</y>
                       <width>111</width>
                       <height>41</height>
                      </rect>
@@ -720,7 +723,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>10</x>
-                      <y>10</y>
+                      <y>50</y>
                       <width>641</width>
                       <height>261</height>
                      </rect>
@@ -930,35 +933,80 @@ background:#5B5B5B;
                      </property>
                     </column>
                    </widget>
-                   <widget class="QPushButton" name="pushButton_upload_2">
+                   <widget class="QFrame" name="frame_permission">
                     <property name="geometry">
                      <rect>
-                      <x>540</x>
-                      <y>290</y>
-                      <width>71</width>
-                      <height>21</height>
+                      <x>430</x>
+                      <y>0</y>
+                      <width>191</width>
+                      <height>41</height>
                      </rect>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>851tegakizatsu</family>
-                      <pointsize>15</pointsize>
-                     </font>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">
+
+background-color: rgb(88, 72, 44);
+border-radius:10px;</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_6">
+                     <item>
+                      <widget class="QLabel" name="label_permission">
+                       <property name="font">
+                        <font>
+                         <family>851tegakizatsu</family>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(255, 255, 255);
+</string>
+                       </property>
+                       <property name="text">
+                        <string>文件库权限：</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_permission">
+                       <property name="font">
+                        <font>
+                         <family>851tegakizatsu</family>
+                         <pointsize>15</pointsize>
+                        </font>
+                       </property>
+                       <property name="toolTip">
+                        <string/>
+                       </property>
+                       <property name="statusTip">
+                        <string>111</string>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">
 QPushButton{	
-background-color: rgb(207, 44, 24);
+background-color: rgb(71, 141, 65);
 color: rgb(255, 255, 255);
+border-radius:4px;
 }
 QPushButton:pressed{	
-	padding-left:5px;
-	padding-top:5px;
+	background-color: rgb(197, 68, 72);
+	border-radius:4px;
 }</string>
-                    </property>
-                    <property name="text">
-                     <string>上传</string>
-                    </property>
+                       </property>
+                       <property name="text">
+                        <string>私有</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
                   </widget>
                   <widget class="QWidget" name="page_log">

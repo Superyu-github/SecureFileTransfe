@@ -30,7 +30,7 @@ class server_ssl:
     def conn_thread(self,connection):
         while True:
             try:
-                connection.settimeout(60)
+                connection.settimeout(100)
                 fileinfo_size = struct.calcsize('1024s')
                 buf = connection.recv(fileinfo_size)
                 if buf:  # 如果不加这个if，第一个文件传输完成后会自动走到下一句
@@ -45,15 +45,21 @@ class server_ssl:
                         time = header['time']
                         sql = "select authority from ft_user where username = '%s' and password = '%s'"%(username,password)
                         cursor.execute(sql)
-                        data = cursor.fetchone()
-                        if data:
+                        data1 = cursor.fetchone()
+                        sql = "select attribute from ft_user where username = '%s' " % (
+                            username)
+                        cursor.execute(sql)
+                        data2 = cursor.fetchone()
+                        # print(data)
+                        if data1:
                             # listResult = os.path.dirname(__file__)+'/result.txt'
                             # 定义文件头信息，包含文件名和文件大小
                             header = {
                                 'Feedback': 'Login',
                                 'stat': 'Success',
                                 'user': username,
-                                'authority': data[0]
+                                'authority': data1[0],
+                                'permission':data2[0],
                             }
                             header_hex = bytes(json.dumps(header).encode('utf-8'))
                             fhead = struct.pack('128s', header_hex)
@@ -71,7 +77,7 @@ class server_ssl:
                                 'Feedback': 'Login',
                                 'stat': 'Fail',
                                 'user': username,
-                                'authority': data
+                                'authority': data1[0]
                             }
                             header_hex = bytes(json.dumps(header).encode('utf-8'))
                             fhead = struct.pack('128s', header_hex)
@@ -350,15 +356,24 @@ class server_ssl:
                                     else:
                                         file_list = ''
                                     print(len(userList))
-
+                                    sql = "select attribute from ft_user where username = '%s' " % (
+                                        user_list[i][0])
+                                    cursor.execute(sql)
+                                    data = cursor.fetchone()
+                                    # print(data)
                                     userList[i] = {
                                         'usrName' : user_list[i][0],
+                                        'permission':data[0],
                                         'fileName' : file_list,
                                         'fileSize' : fileSize
+
                                     }
                                     print(userList)
                                 else:
                                     print("No Folder!")
+
+
+
                             header = {
                                 'Command': 'Check',
                                 'checkList' : userList,
@@ -370,13 +385,7 @@ class server_ssl:
                             print(fhead)
                             connection.send(fhead)
 
-                            # fo = open(listResult, 'rb')
-                            # while True:
-                            #     filedata = fo.read(1024)
-                            #     if not filedata:
-                            #         break
-                            #     connection.send(filedata)
-                            # fo.close()
+
                             print('%s check successfully')
 
                             loginlog = '\n%s try to check at "%s" , Stat: Success ' % \
@@ -438,13 +447,6 @@ class server_ssl:
                             fhead = struct.pack('128s', header_hex)
                             connection.send(fhead)
 
-                            fo = open(listResult, 'rb')
-                            while True:
-                                filedata = fo.read(1024)
-                                if not filedata:
-                                    break
-                                connection.send(filedata)
-                            fo.close()
                             print('%s change successfully')
 
                             loginlog = '\n%s try to change at "%s" , Stat: Success ' % \
