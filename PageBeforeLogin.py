@@ -173,7 +173,12 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         username = self.lineEdit_username_r.text()
         password = self.lineEdit_password_r.text()
         rpassword = self.lineEdit_repassword_r.text()
-        state = self.client.register(username,rpassword)
+
+        if password == rpassword and password != '':
+            state = self.client.register(username,rpassword)
+        else:
+            state = False
+
         if state:
             self.pushButton_register_r.setText("注册成功")
             self.pushButton_register_r.setStyleSheet('''QPushButton{	
@@ -304,6 +309,12 @@ class PageBeforeLogin(QMainWindow, Ui_MainWindow):
         """
         connect_sever()
     
+    @pyqtSlot()
+    def on_centralWidget_destroyed(self):
+        """
+        Slot documentation goes here.
+        """
+        self.client.ssock.close()
 
 
 def connect_sever():

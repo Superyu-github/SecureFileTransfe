@@ -936,7 +936,7 @@ background:#5B5B5B;
                    <widget class="QFrame" name="frame_permission">
                     <property name="geometry">
                      <rect>
-                      <x>430</x>
+                      <x>440</x>
                       <y>0</y>
                       <width>191</width>
                       <height>41</height>

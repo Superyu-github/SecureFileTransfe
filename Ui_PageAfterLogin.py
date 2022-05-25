@@ -469,7 +469,7 @@ class Ui_MainWindow(object):
         self.tableWidget.verticalHeader().setCascadingSectionResizes(False)
         self.tableWidget.verticalHeader().setSortIndicatorShown(False)
         self.frame_permission = QtWidgets.QFrame(self.page_transfer)
-        self.frame_permission.setGeometry(QtCore.QRect(430, 0, 191, 41))
+        self.frame_permission.setGeometry(QtCore.QRect(440, 0, 191, 41))
         self.frame_permission.setStyleSheet("\n"
 "\n"
 "background-color: rgb(88, 72, 44);\n"

@@ -95,7 +95,7 @@ class Ui_MainWindow(object):
         self.stackedWidget = QtWidgets.QStackedWidget(self.frame_content)
         font = QtGui.QFont()
         font.setFamily("Comic Sans MS")
-        font.setPointSize(25)
+        font.setPointSize(30)
         self.stackedWidget.setFont(font)
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_login = QtWidgets.QWidget()
@@ -111,8 +111,8 @@ class Ui_MainWindow(object):
         self.lineEdit_username_l = QtWidgets.QLineEdit(self.page_login)
         self.lineEdit_username_l.setGeometry(QtCore.QRect(100, 60, 221, 41))
         font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(12)
+        font.setFamily("Comic Sans MS")
+        font.setPointSize(18)
         font.setUnderline(False)
         self.lineEdit_username_l.setFont(font)
         self.lineEdit_username_l.setStyleSheet("border:none;\n"
@@ -124,7 +124,7 @@ class Ui_MainWindow(object):
         self.lineEdit_password_l.setGeometry(QtCore.QRect(100, 110, 221, 41))
         font = QtGui.QFont()
         font.setFamily("黑体")
-        font.setPointSize(12)
+        font.setPointSize(15)
         self.lineEdit_password_l.setFont(font)
         self.lineEdit_password_l.setStyleSheet("border:none;\n"
 "border-bottom:2px solid rgb(0,0,0);\n"
@@ -275,7 +275,7 @@ class Ui_MainWindow(object):
         self.lineEdit_password_r.setGeometry(QtCore.QRect(130, 90, 191, 41))
         font = QtGui.QFont()
         font.setFamily("黑体")
-        font.setPointSize(12)
+        font.setPointSize(15)
         self.lineEdit_password_r.setFont(font)
         self.lineEdit_password_r.setStyleSheet("border:none;\n"
 "border-bottom:2px solid rgb(0,0,0);\n"
@@ -296,8 +296,8 @@ class Ui_MainWindow(object):
         self.lineEdit_username_r = QtWidgets.QLineEdit(self.page_register)
         self.lineEdit_username_r.setGeometry(QtCore.QRect(130, 40, 191, 41))
         font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(12)
+        font.setFamily("Comic Sans MS")
+        font.setPointSize(18)
         font.setUnderline(False)
         self.lineEdit_username_r.setFont(font)
         self.lineEdit_username_r.setStyleSheet("border:none;\n"
@@ -335,7 +335,7 @@ class Ui_MainWindow(object):
         self.lineEdit_repassword_r.setGeometry(QtCore.QRect(160, 140, 161, 41))
         font = QtGui.QFont()
         font.setFamily("黑体")
-        font.setPointSize(12)
+        font.setPointSize(15)
         self.lineEdit_repassword_r.setFont(font)
         self.lineEdit_repassword_r.setStyleSheet("border:none;\n"
 "border-bottom:2px solid rgb(0,0,0);\n"
@@ -394,8 +394,8 @@ class Ui_MainWindow(object):
         self.lineEdit_ip_s = QtWidgets.QLineEdit(self.page_Setting)
         self.lineEdit_ip_s.setGeometry(QtCore.QRect(130, 50, 191, 41))
         font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(12)
+        font.setFamily("Comic Sans MS")
+        font.setPointSize(18)
         font.setUnderline(False)
         self.lineEdit_ip_s.setFont(font)
         self.lineEdit_ip_s.setStyleSheet("border:none;\n"
@@ -406,8 +406,8 @@ class Ui_MainWindow(object):
         self.lineEdit_port_s = QtWidgets.QLineEdit(self.page_Setting)
         self.lineEdit_port_s.setGeometry(QtCore.QRect(130, 100, 191, 41))
         font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(12)
+        font.setFamily("Comic Sans MS")
+        font.setPointSize(18)
         self.lineEdit_port_s.setFont(font)
         self.lineEdit_port_s.setStyleSheet("border:none;\n"
 "border-bottom:2px solid rgb(0,0,0);\n"

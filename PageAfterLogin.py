@@ -4,7 +4,7 @@
 Module implementing PageAfterLogein.
 """
 from PyQt5 import QtCore, QtGui
-from PyQt5.QtCore import pyqtSlot, Qt
+from PyQt5.QtCore import pyqtSlot, Qt, QModelIndex
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidget, QTableWidgetItem, QFileDialog
 
 from Ui_PageAfterLogin import Ui_MainWindow
@@ -179,7 +179,7 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
                                                             border-radius:0px;
                                                             background-color:rgba(0, 0, 0,0);                                
                                                             ''')
-        # TODO: not implemented yet
+
 
 
     @pyqtSlot()
@@ -205,7 +205,7 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
 
 
 
-        # TODO: not implemented yet
+
 
     @pyqtSlot()
     def on_pushButton_download_clicked(self):
@@ -238,6 +238,31 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
         # print(self.client.permission)
         # self.change_pushButton_permission_state(permission)
         self.on_pushButton_transfer_clicked()
+    
+    @pyqtSlot()
+    def on_centralWidget_destroyed(self):
+        """
+        Slot documentation goes here.
+        """
+        self.client.ssock.close()
+    
+    @pyqtSlot(QModelIndex)
+    def on_tableWidget_clicked(self, index):
+        """
+        Slot documentation goes here.
+        
+        @param index DESCRIPTION
+        @type QModelIndex
+        """
+        self.pushButton_upload.setText("上传")
+        self.pushButton_upload.setStyleSheet('''QPushButton{	
+                                                background-color: rgb(207, 44, 24);
+                                                color: rgb(255, 255, 255);
+                                                }
+                                                QPushButton:pressed{	
+                                                    padding-left:5px;
+                                                    padding-top:5px;
+                                                }''')
 
 
 

@@ -30,7 +30,7 @@ class server_ssl:
     def conn_thread(self,connection):
         while True:
             try:
-                connection.settimeout(100)
+                connection.settimeout(None)
                 fileinfo_size = struct.calcsize('1024s')
                 buf = connection.recv(fileinfo_size)
                 if buf:  # 如果不加这个if，第一个文件传输完成后会自动走到下一句
@@ -331,7 +331,9 @@ class server_ssl:
                             if data[0] == 'admin':
                                 sql = 'select username from ft_user'
                             else:
-                                sql = "select username from ft_user where attribute = 'public'"
+                                sql = f'''
+                                            select username from ft_user where attribute = 'public' UNION
+                                            select username from ft_user where username = '{username}';'''
                             cursor.execute(sql)
                             user_list = cursor.fetchall()
                             userList = []
@@ -664,10 +666,10 @@ class server_ssl:
                             # }
                            
 
-                            # auditlog = '\n%s try to audit at "%s" , Stat: Success ' % \
-                            #             (username, time)
-                            # with open(os.path.dirname(__file__)+'/Serverlog.txt', 'a', encoding='utf-8') as list:
-                            #     list.write(auditlog)
+                            auditlog = '\n%s try to audit at "%s" , Stat: Success ' % \
+                                        (username, time)
+                            with open(os.path.dirname(__file__)+'/Serverlog.txt', 'a', encoding='utf-8') as list:
+                                list.write(auditlog)
                         else:
                             header = {
                                 'Feedback': 'Login',
