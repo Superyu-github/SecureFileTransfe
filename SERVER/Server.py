@@ -3,16 +3,36 @@ import threading, struct, json, os,rsa, pymysql
 
 from Cryptodome.Cipher import AES
 
-#打开数据库连接
-db = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='admin', db='SecureFileTransfer', charset='utf8')
-#使用cursor方法创建一个游标
-cursor = db.cursor()
-#查询数据库版本
-cursor.execute("select version()")
-data = cursor.fetchone()
-print(" Database Version:%s" % data)
 
-class server_ssl:
+
+class Sever:
+    def connect(self):
+        # 打开数据库连接
+        # self.db = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='admin', db='SecureFileTransfer',
+        #                      charset='utf8')
+
+        self.db = pymysql.connect(host=self.host, port=self.port, user=self.user, passwd=self.passwd, db=self.dbname,
+                             charset='utf8')
+
+        # 使用cursor方法创建一个游标
+        self.cursor = self.db.cursor()
+        # 查询数据库版本
+        self.cursor.execute("select version()")
+        data = self.cursor.fetchone()
+        print(" Database Version:%s" % data)
+    def create_table(self):
+        sql = '''
+                            CREATE TABLE `ft_user2` (
+                  `ID` int NOT NULL AUTO_INCREMENT,
+                  `username` varchar(255) NOT NULL,
+                  `password` varchar(255) NOT NULL,
+                  `authority` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'normal_user',
+                  `attribute` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'private',
+                  PRIMARY KEY (`ID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;              
+        '''
+        self.cursor.execute(sql)
+
     def server_listen(self):
         # 监听端口
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0) as ssock:
@@ -44,12 +64,12 @@ class server_ssl:
                         password = header['password']
                         time = header['time']
                         sql = "select authority from ft_user where username = '%s' and password = '%s'"%(username,password)
-                        cursor.execute(sql)
-                        data1 = cursor.fetchone()
+                        self.cursor.execute(sql)
+                        data1 = self.cursor.fetchone()
                         sql = "select attribute from ft_user where username = '%s' " % (
                             username)
-                        cursor.execute(sql)
-                        data2 = cursor.fetchone()
+                        self.cursor.execute(sql)
+                        data2 = self.cursor.fetchone()
                         # print(data)
                         if data1:
                             # listResult = os.path.dirname(__file__)+'/result.txt'
@@ -266,8 +286,8 @@ class server_ssl:
                         password = header['password']
                         time = header['time']
                         sql = "select ID from ft_user where username = '%s'" % (username)
-                        cursor.execute(sql)
-                        data = cursor.fetchone()
+                        self.cursor.execute(sql)
+                        data = self.cursor.fetchone()
                         if data:
                             # 定义文件头信息，包含文件名和文件大小
                             header = {
@@ -298,8 +318,8 @@ class server_ssl:
                             
                             sql = "insert into ft_user (username, password) values ('%s','%s')" % (username,password)
                             # sql = "insert into user_ft (username, password) values ('%s','%s')" % (username,password)
-                            cursor.execute(sql)
-                            db.commit()
+                            self.cursor.execute(sql)
+                            self.db.commit()
                             # 定义文件头信息，包含文件名和文件大小
                             header = {
                                 'Feedback': 'Register',
@@ -324,8 +344,8 @@ class server_ssl:
                         password = header['password']
                         time = header['time']
                         sql = "select authority from ft_user where username = '%s' and password = '%s'"%(username,password)
-                        cursor.execute(sql)
-                        data = cursor.fetchone()
+                        self.cursor.execute(sql)
+                        data = self.cursor.fetchone()
                         print(data[0])
                         if data:
                             if data[0] == 'admin':
@@ -334,8 +354,8 @@ class server_ssl:
                                 sql = f'''
                                             select username from ft_user where attribute = 'public' UNION
                                             select username from ft_user where username = '{username}';'''
-                            cursor.execute(sql)
-                            user_list = cursor.fetchall()
+                            self.cursor.execute(sql)
+                            user_list = self.cursor.fetchall()
                             userList = []
                             # 将所有的用户存入user_list
                             for dat in user_list:
@@ -360,8 +380,8 @@ class server_ssl:
                                     print(len(userList))
                                     sql = "select attribute from ft_user where username = '%s' " % (
                                         user_list[i][0])
-                                    cursor.execute(sql)
-                                    data = cursor.fetchone()
+                                    self.cursor.execute(sql)
+                                    data = self.cursor.fetchone()
                                     # print(data)
                                     userList[i] = {
                                         'usrName' : user_list[i][0],
@@ -420,8 +440,8 @@ class server_ssl:
                         password = header['password']
                         time = header['time']
                         sql = "select attribute from ft_user where username = '%s' and password = '%s'"%(username,password)
-                        cursor.execute(sql)
-                        data = cursor.fetchone()
+                        self.cursor.execute(sql)
+                        data = self.cursor.fetchone()
                         print(data)
                         if data[0]=='public':
                             beforeAtt = 'public'
@@ -431,11 +451,11 @@ class server_ssl:
                             beforeAtt = 'private'
                             afterAtt = 'public'
                             sql = "update ft_user SET attribute='public' where username='%s'"%(username)
-                        cursor.execute(sql)
-                        db.commit()
+                        self.cursor.execute(sql)
+                        self.db.commit()
                         sql = "select attribute from ft_user where username='%s'" % (username)
-                        cursor.execute(sql)
-                        data = cursor.fetchone()
+                        self.cursor.execute(sql)
+                        data = self.cursor.fetchone()
                         if data[0] == afterAtt:
                             print("Successful changing")
                             header = {
@@ -633,8 +653,8 @@ class server_ssl:
                         password = header['password']
                         time = header['time']
                         sql = "select authority from ft_user where username = '%s' and password = '%s'"%(username,password)
-                        cursor.execute(sql)
-                        data = cursor.fetchone()
+                        self.cursor.execute(sql)
+                        data = self.cursor.fetchone()
                         if data[0] == 'admin':
                             listResult = os.path.dirname(__file__)+'/Serverlog.txt'
                             # 定义文件头信息，包含文件名和文件大小
@@ -765,9 +785,41 @@ def rsa_public_decrypt(msg,file_rsa_public_name):
         rsa_public_key=rsa.PublicKey.load_pkcs1(f.read().encode())
     msg_decrypted=rsa.decrypt(msg, rsa_public_key)
     return msg_decrypted
+def dump_config():
+    config = {
+        "host":"127.0.0.1",
+        "port":3306,
+        "user":"root",
+        "passwd":"admin",
+        "dbname":"SecureFileTransfer",
+    }
+
+    dump = json.dumps(config)
+    print(dump)
+    with open("config.config","w") as f:
+        f.write(dump)
+
+
+def load_config(sever):
+    with open("config.config","r") as f:
+        config = json.loads(f.read())
+        sever.host = config["host"]
+        sever.port = config["port"]
+        sever.user = config["user"]
+        sever.passwd = config["passwd"]
+        sever.dbname = config["dbname"]
 
 if __name__ == "__main__":
-    server = server_ssl()
+    # self.db = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='admin', db='SecureFileTransfer',
+    #                           charset='utf8')
+    server = Sever()
+    try:
+        load_config(server)
+    except FileNotFoundError:
+        dump_config()
+        load_config(server)
+
+    server.connect()
     server.server_listen()
     
     

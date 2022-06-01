@@ -1,0 +1,1087 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>430</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="minimumSize">
+    <size>
+     <width>430</width>
+     <height>500</height>
+    </size>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame_top">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>8</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(252, 236, 12);</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QFrame" name="frame_6">
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>-10</y>
+            <width>71</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QPushButton" name="pushButton_7">
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+background-color: rgba(255, 255, 255,0);
+boder:none;
+}
+QPushButton:hover{
+padding-bottom:5px;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../ico.qrc">
+               <normaloff>:/ico/ico/minimize.png</normaloff>:/ico/ico/minimize.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_8">
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+background-color: rgba(255, 255, 255,0);
+boder:none;
+}
+QPushButton:hover{
+padding-bottom:5px;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../ico.qrc">
+               <normaloff>:/ico/ico/close.png</normaloff>:/ico/ico/close.png</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_content">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>92</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(19, 99, 119);</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QStackedWidget" name="stackedWidget">
+            <property name="font">
+             <font>
+              <family>Comic Sans MS</family>
+              <pointsize>30</pointsize>
+             </font>
+            </property>
+            <property name="currentIndex">
+             <number>2</number>
+            </property>
+            <widget class="QWidget" name="page_null">
+             <widget class="QLabel" name="label_16">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>50</y>
+                <width>101</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Comic Sans MS</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string>IP：</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_17">
+              <property name="geometry">
+               <rect>
+                <x>130</x>
+                <y>-10</y>
+                <width>141</width>
+                <height>61</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Comic Sans MS</family>
+                <pointsize>22</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(248, 237, 83);</string>
+              </property>
+              <property name="text">
+               <string>Setting</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_ip_s">
+              <property name="geometry">
+               <rect>
+                <x>130</x>
+                <y>50</y>
+                <width>191</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Comic Sans MS</family>
+                <pointsize>18</pointsize>
+                <underline>false</underline>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_port_s">
+              <property name="geometry">
+               <rect>
+                <x>130</x>
+                <y>100</y>
+                <width>191</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Comic Sans MS</family>
+                <pointsize>18</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Normal</enum>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_return_s">
+              <property name="geometry">
+               <rect>
+                <x>220</x>
+                <y>190</y>
+                <width>111</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{	
+	background-color: rgb(223, 212, 63);
+}
+QPushButton:pressed{	
+	padding-left:5px;
+	padding-top:5px;
+}</string>
+              </property>
+              <property name="text">
+               <string>返回</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_18">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>100</y>
+                <width>101</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Comic Sans MS</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string>Prot：</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_set_s">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>190</y>
+                <width>111</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{	
+	background-color: rgb(223, 212, 63);
+}
+QPushButton:pressed{	
+	padding-left:5px;
+	padding-top:5px;
+}</string>
+              </property>
+              <property name="text">
+               <string>设定</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_null2">
+             <widget class="QLabel" name="label">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>-10</y>
+                <width>341</width>
+                <height>61</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Comic Sans MS</family>
+                <pointsize>25</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(248, 237, 83);</string>
+              </property>
+              <property name="text">
+               <string>Secure File Transfer</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_username_l">
+              <property name="geometry">
+               <rect>
+                <x>100</x>
+                <y>60</y>
+                <width>221</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Comic Sans MS</family>
+                <pointsize>18</pointsize>
+                <underline>false</underline>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_password_l">
+              <property name="geometry">
+               <rect>
+                <x>100</x>
+                <y>110</y>
+                <width>221</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_4">
+              <property name="geometry">
+               <rect>
+                <x>50</x>
+                <y>60</y>
+                <width>51</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string>账号：</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_5">
+              <property name="geometry">
+               <rect>
+                <x>50</x>
+                <y>110</y>
+                <width>51</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string>密码：</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_register_l">
+              <property name="geometry">
+               <rect>
+                <x>210</x>
+                <y>170</y>
+                <width>111</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{	
+	background-color: rgb(223, 212, 63);
+}
+QPushButton:pressed{	
+	padding-left:5px;
+	padding-top:5px;
+}</string>
+              </property>
+              <property name="text">
+               <string>注册</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_login_l">
+              <property name="geometry">
+               <rect>
+                <x>50</x>
+                <y>170</y>
+                <width>111</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{	
+	background-color: rgb(223, 212, 63);
+}
+QPushButton:pressed{	
+	padding-left:5px;
+	padding-top:5px;
+}</string>
+              </property>
+              <property name="text">
+               <string>登录</string>
+              </property>
+             </widget>
+             <widget class="QFrame" name="frame_left">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>220</y>
+                <width>181</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QPushButton" name="pushButton_set_l">
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{
+background-color: rgba(255, 255, 255,0);
+boder:none;
+}
+QPushButton:hover{
+padding-bottom:5px;
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../ico.qrc">
+                   <normaloff>:/ico/ico/set.png</normaloff>:/ico/ico/set.png</iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_ip">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Comic Sans MS</family>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(248, 237, 83);</string>
+                 </property>
+                 <property name="text">
+                  <string>127.0.0.1：6666</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QFrame" name="frame_right">
+              <property name="geometry">
+               <rect>
+                <x>180</x>
+                <y>220</y>
+                <width>181</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QPushButton" name="pushButton_connectLight">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>10</y>
+                 <width>65</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+background-color: rgba(255, 255, 255,0);
+boder:none;
+}
+QPushButton:pressed{	
+	padding-left:5px;
+	padding-top:5px;
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../ico.qrc">
+                 <normaloff>:/ico/ico/redpoint.png</normaloff>:/ico/ico/redpoint.png</iconset>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_connect">
+               <property name="geometry">
+                <rect>
+                 <x>60</x>
+                 <y>10</y>
+                 <width>101</width>
+                 <height>21</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Comic Sans MS</family>
+                 <pointsize>15</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(248, 237, 83);</string>
+               </property>
+               <property name="text">
+                <string>Disonnect</string>
+               </property>
+              </widget>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_setting">
+             <widget class="QPushButton" name="pushButton_start">
+              <property name="geometry">
+               <rect>
+                <x>220</x>
+                <y>330</y>
+                <width>111</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{	
+	background-color: rgb(223, 212, 63);
+}
+QPushButton:pressed{	
+	padding-left:5px;
+	padding-top:5px;
+}</string>
+              </property>
+              <property name="text">
+               <string>启动</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_dbport">
+              <property name="geometry">
+               <rect>
+                <x>130</x>
+                <y>90</y>
+                <width>191</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Normal</enum>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_username">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>40</y>
+                <width>101</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string>host</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_dbhost">
+              <property name="geometry">
+               <rect>
+                <x>130</x>
+                <y>40</y>
+                <width>191</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Comic Sans MS</family>
+                <pointsize>18</pointsize>
+                <underline>false</underline>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_13">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>90</y>
+                <width>101</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string>port</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_init">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>330</y>
+                <width>111</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{	
+	background-color: rgb(223, 212, 63);
+}
+QPushButton:pressed{	
+	padding-left:5px;
+	padding-top:5px;
+}</string>
+              </property>
+              <property name="text">
+               <string>初始化</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_dbuser">
+              <property name="geometry">
+               <rect>
+                <x>160</x>
+                <y>140</y>
+                <width>161</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_14">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>140</y>
+                <width>101</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string>user</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_15">
+              <property name="geometry">
+               <rect>
+                <x>140</x>
+                <y>-10</y>
+                <width>141</width>
+                <height>61</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Comic Sans MS</family>
+                <pointsize>22</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(248, 237, 83);</string>
+              </property>
+              <property name="text">
+               <string>Sever</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_19">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>190</y>
+                <width>101</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string>passwd</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_dbpassed">
+              <property name="geometry">
+               <rect>
+                <x>160</x>
+                <y>190</y>
+                <width>161</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_20">
+              <property name="geometry">
+               <rect>
+                <x>60</x>
+                <y>240</y>
+                <width>101</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>851tegakizatsu</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string>dbname</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit_dbname">
+              <property name="geometry">
+               <rect>
+                <x>160</x>
+                <y>240</y>
+                <width>161</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none;
+border-bottom:2px solid rgb(0,0,0);
+background-color: rgba(0, 0, 0,0);</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+             <zorder>pushButton_start</zorder>
+             <zorder>label_username</zorder>
+             <zorder>label_13</zorder>
+             <zorder>pushButton_init</zorder>
+             <zorder>label_14</zorder>
+             <zorder>label_15</zorder>
+             <zorder>lineEdit_dbhost</zorder>
+             <zorder>lineEdit_dbport</zorder>
+             <zorder>lineEdit_dbuser</zorder>
+             <zorder>label_19</zorder>
+             <zorder>lineEdit_dbpassed</zorder>
+             <zorder>label_20</zorder>
+             <zorder>lineEdit_dbname</zorder>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../ico.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>448</x>
+     <y>32</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showMinimized()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>506</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
