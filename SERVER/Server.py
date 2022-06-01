@@ -20,9 +20,22 @@ class Sever:
         self.cursor.execute("select version()")
         data = self.cursor.fetchone()
         print(" Database Version:%s" % data)
+
+    def table_check(self):
+        #检查“ft_user”是否存在，若不存在则创建
+        sql = "show tables;"
+        self.cursor.execute(sql)
+        data = self.cursor.fetchall()
+        for table in data:
+            if table[0]=="ft_user":
+                print("Table exist ,check OK")
+                return True
+        self.create_table()
+        print("Table not found ,creat new table")
+
     def create_table(self):
         sql = '''
-                            CREATE TABLE `ft_user2` (
+                            CREATE TABLE `ft_user` (
                   `ID` int NOT NULL AUTO_INCREMENT,
                   `username` varchar(255) NOT NULL,
                   `password` varchar(255) NOT NULL,
@@ -820,6 +833,7 @@ if __name__ == "__main__":
         load_config(server)
 
     server.connect()
+    server.table_check()
     server.server_listen()
     
     
