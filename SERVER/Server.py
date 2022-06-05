@@ -390,7 +390,7 @@ class Sever:
                                             fileSize.append(os.stat(path_file).st_size) 
                                     else:
                                         file_list = ''
-                                    print(len(userList))
+                                    # print(len(userList))
                                     sql = "select attribute from ft_user where username = '%s' " % (
                                         user_list[i][0])
                                     self.cursor.execute(sql)

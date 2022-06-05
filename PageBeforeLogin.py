@@ -9,7 +9,9 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 
 from PageAfterLogin import PageAfterLogein
 from Ui_PageBeforeLogin import Ui_MainWindow
-
+import ClientOperate
+import socket
+import time, os, struct, json, threading, rsa
 from ClientOperate import Client
 
 class PageBeforeLogin(QMainWindow, Ui_MainWindow):
@@ -338,6 +340,7 @@ def connect_sever():
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/ico/ico/redpoint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         PageBeforeLogin.pushButton_connectLight.setIcon(icon)
+
 
 if __name__ == "__main__":
     import sys
