@@ -263,6 +263,15 @@ class PageAfterLogein(QMainWindow, Ui_MainWindow):
                                                     padding-left:5px;
                                                     padding-top:5px;
                                                 }''')
+        self.pushButton_download.setText("下载")
+        self.pushButton_download.setStyleSheet('''QPushButton{	
+                                                background-color: rgb(207, 44, 24);
+                                                color: rgb(255, 255, 255);
+                                                }
+                                                QPushButton:pressed{	
+                                                    padding-left:5px;
+                                                    padding-top:5px;
+                                                }''')
 
 
 

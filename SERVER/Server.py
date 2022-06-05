@@ -572,7 +572,7 @@ class Sever:
                         print("3.AES加密后的初始化向量文件：file_iv_encrypted")
                         print("4.加密后的签名文件：file_signature_encrypted")
                         print("5.填充位数文件：fill_number")
-                        print("\n最后请删除程序所在路径下加入和生成的文件，谢谢！")
+
 
                         path1=os.path.join(os.path.dirname(__file__)+f'/SeverCache/', 'file_encrypted')
                         path2=os.path.join(os.path.dirname(__file__)+f'/SeverCache/', 'AES_key_encrypted')

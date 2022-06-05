@@ -12,6 +12,8 @@ from Ui_PageBeforeLogin import Ui_MainWindow
 import ClientOperate
 import socket
 import time, os, struct, json, threading, rsa
+
+from Cryptodome.Cipher import AES
 from ClientOperate import Client
 
 class PageBeforeLogin(QMainWindow, Ui_MainWindow):
