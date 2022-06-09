@@ -17,10 +17,10 @@ class Client:
         self.permission = ''
         self.ip = '127.0.0.1'
         self.port = 6666
-
+    #与服务端建立连接
     def connect_sever(self):
         self.ssock = socket.create_connection((self.ip, self.port))
-
+    #登录
     def login(self, username, password):
         '''登录'''
         self.username = username
@@ -41,7 +41,7 @@ class Client:
         print('send over...')
         fileinfo_size = struct.calcsize('128s')  # 用来计算特定格式的输出的大小，是几个字节
         buf = self.ssock.recv(fileinfo_size)  # 接受信息
-        if buf:  # 如果不加这个if，第一个文件传输完成后会自动走到下一句
+        if buf:
             header_json = str(struct.unpack('128s', buf)[0], encoding='utf-8').strip('\00')
             print(header_json)
             header = json.loads(header_json)
@@ -53,7 +53,7 @@ class Client:
 
             else:
                 return False
-
+    #上传
     def upload(self, filepath, useAES):
         if os.path.isfile(filepath):
             fileinfo_size = struct.calcsize('1024sl')  # 定义打包规则
@@ -221,7 +221,7 @@ class Client:
             # self.ssock.close()
         else:
             print('ERROR FILE')
-
+    #下载
     def download(self, filename, fileowner):
         # 定义文件头信息，包含文件名和文件大小
         header = {
@@ -379,7 +379,7 @@ class Client:
 
             else:
                 return False
-
+    #审计
     def audit(self):
         # 定义文件头信息，包含文件名和文件大小
         header = {
@@ -419,7 +419,7 @@ class Client:
                 file.close()
                 print('receive done')
                 # self.ssock.close()
-
+    #权限更改
     def change(self):
         header = {
             'Command': 'Change',
@@ -445,7 +445,7 @@ class Client:
             else:
                 print("Change Error")
                 return False
-
+    #数据刷新
     def check(self):
         # 定义文件头信息，包含文件名和文件大小
         header = {
@@ -473,7 +473,7 @@ class Client:
             else:
                 print("NO PERMISSION!")
                 return False
-
+    #注册
     def register(self, username, password):
         # 定义文件头信息，包含文件名和文件大小
         header = {
@@ -501,7 +501,7 @@ class Client:
             else:
                 return False
 
-
+# AES加密
 def aes_encrypt(aes_file, key, iv):  # aes_file 文件，key 16-bytes 对称秘钥
     from Cryptodome.Cipher import AES
     from Cryptodome import Random

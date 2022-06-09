@@ -6,6 +6,7 @@ from Cryptodome.Cipher import AES
 
 
 class Sever:
+
     def connect(self):
         # 打开数据库连接
         # self.db = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='admin', db='SecureFileTransfer',
@@ -110,7 +111,7 @@ class Sever:
                                 'Feedback': 'Login',
                                 'stat': 'Fail',
                                 'user': username,
-                                'authority': data1[0]
+                                'authority': "NULL"
                             }
                             header_hex = bytes(json.dumps(header).encode('utf-8'))
                             fhead = struct.pack('128s', header_hex)
